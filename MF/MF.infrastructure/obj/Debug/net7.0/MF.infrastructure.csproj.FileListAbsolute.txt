@@ -1,0 +1,15 @@
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\bin\Debug\net7.0\MF.infrastructure.deps.json
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\bin\Debug\net7.0\MF.infrastructure.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\bin\Debug\net7.0\MF.infrastructure.pdb
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\bin\Debug\net7.0\MF.Domain.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\bin\Debug\net7.0\MF.Domain.pdb
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\MF.infrastructure.csproj.AssemblyReference.cache
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\MF.infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\MF.infrastructure.AssemblyInfoInputs.cache
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\MF.infrastructure.AssemblyInfo.cs
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\MF.infrastructure.csproj.CoreCompileInputs.cache
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\MF.infrastructure.csproj.CopyComplete
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\MF.infrastructure.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\refint\MF.infrastructure.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\MF.infrastructure.pdb
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.infrastructure\obj\Debug\net7.0\ref\MF.infrastructure.dll

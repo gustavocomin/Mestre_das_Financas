@@ -1,0 +1,12 @@
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\bin\Debug\net7.0\MF.Domain.deps.json
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\bin\Debug\net7.0\MF.Domain.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\bin\Debug\net7.0\MF.Domain.pdb
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\MF.Domain.csproj.AssemblyReference.cache
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\MF.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\MF.Domain.AssemblyInfoInputs.cache
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\MF.Domain.AssemblyInfo.cs
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\MF.Domain.csproj.CoreCompileInputs.cache
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\MF.Domain.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\refint\MF.Domain.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\MF.Domain.pdb
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Domain\obj\Debug\net7.0\ref\MF.Domain.dll
