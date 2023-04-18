@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "j54Lt9QRkddDolTP31ruPK72bBW/HdQdlRsB3SPiMfaXR3vTvsGARs9OLqX7eotg6ohpy1I9MRW90cdwcWu0CA==",
+  "dgSpecHash": "4jVF+L4G7dqNIG7ldPSLoPsM89PyEG3fkJKb1Hf/0kLTSXBx7GWnlBt/9QNijgoYBTUr9GMqONbzGnK8Re1oFA==",
   "success": true,
   "projectFilePath": "E:\\PROGRAMACAO\\C#\\Mestre das finanças - projeto de controle financeiro\\Mestre_das_Financas\\MF\\MF.Api\\MF.Api.csproj",
   "expectedPackageFiles": [
@@ -52,6 +52,8 @@
     "C:\\Users\\Gustavo\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Gustavo\\.nuget\\packages\\npgsql\\7.0.2\\npgsql.7.0.2.nupkg.sha512",
+    "C:\\Users\\Gustavo\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.3\\npgsql.entityframeworkcore.postgresql.7.0.3.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.5.0\\swashbuckle.aspnetcore.annotations.6.5.0.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",

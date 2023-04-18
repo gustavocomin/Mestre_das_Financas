@@ -1,6 +1,7 @@
 ﻿using MF.Domain.Commons.Empresas;
 using MF.Domain.Commons.ModalidadePagto.CondPagtos;
 using MF.Domain.Commons.ModalidadePagto.FormaPagtos;
+using MF.Domain.ControleMensal.Mercado.Compras.Itens;
 
 namespace MF.Domain.ControleMensal.Mercado.Compras
 {
@@ -12,6 +13,8 @@ namespace MF.Domain.ControleMensal.Mercado.Compras
         public decimal ValorTotalItens { get; private set; }
         public decimal ValorTotalDescontos { get; private set; }
         public decimal ValorTributos { get; set; }
+        public string COO { get; set; }
+        public string CCF { get; set; }
 
         public int CodigoFormaPagto { get; set; }
         public int CodigoCondPagto { get; set; }
@@ -38,7 +41,7 @@ namespace MF.Domain.ControleMensal.Mercado.Compras
             ValorTotal = ValorTotalItens - ValorTotalDescontos + ValorTributos;
         }
 
-        private void ValidaValorTotalItens(decimal valorTotalItens)
+        private static void ValidaValorTotalItens(decimal valorTotalItens)
         {
             if (string.IsNullOrWhiteSpace(valorTotalItens.ToString()))
                 throw new Exception("Erro ao calcular valor total! Erro ao calcular o valor total dos itens.");

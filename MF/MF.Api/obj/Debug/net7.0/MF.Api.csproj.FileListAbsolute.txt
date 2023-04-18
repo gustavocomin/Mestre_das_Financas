@@ -3,7 +3,6 @@ E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_d
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\MF.Api.AssemblyInfoInputs.cache
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\MF.Api.AssemblyInfo.cs
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\MF.Api.csproj.CoreCompileInputs.cache
-E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\MF.Api.MvcApplicationPartsAssemblyInfo.cs
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\MF.Api.MvcApplicationPartsAssemblyInfo.cache
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\appsettings.Development.json
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\appsettings.json
@@ -27,6 +26,8 @@ E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_d
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Microsoft.OpenApi.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Mono.TextTemplating.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Npgsql.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -34,6 +35,11 @@ E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_d
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\System.CodeDom.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\System.Security.Permissions.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\MF.Domain.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\MF.Repository.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\MF.Repository.pdb
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\MF.Domain.pdb
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\MF.Api.MvcApplicationPartsAssemblyInfo.cs
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\staticwebassets\msbuild.MF.Api.Microsoft.AspNetCore.StaticWebAssets.props
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\staticwebassets\msbuild.build.MF.Api.props
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.MF.Api.props

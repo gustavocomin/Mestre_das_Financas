@@ -1,6 +1,8 @@
 ﻿using MF.Domain.Commons.ClassesBase;
 using MF.Domain.Commons.Consumirdores;
 using MF.Domain.Commons.Empresas;
+using MF.Domain.Commons.ModalidadePagto.CondPagtos;
+using MF.Domain.Commons.ModalidadePagto.FormaPagtos;
 
 namespace MF.Domain.ControleMensal.Despesas
 {
@@ -17,7 +19,11 @@ namespace MF.Domain.ControleMensal.Despesas
 
         public int? CodigoEmpresa { get; set; }
         public int CodigoConsumidor { get; set; }
+        public int CodigoFormaPagto { get; set; }
+        public int CodigoCondPagto { get; set; }
 
+        public Lazy<FormaPagto> FormaPagto { get; set; }
+        public Lazy<CondPagto> CondPagto { get; set; }
         public Consumidor Consumidor { get; set; }
         public Empresa? Empresa { get; set; }
     }

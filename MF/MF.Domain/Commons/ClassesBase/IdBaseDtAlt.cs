@@ -9,6 +9,6 @@ namespace MF.Domain.Commons.ClassesBase
             Common.AtualizaDataAlteracao<IdBaseDtAlt>(this);
         }
 
-        private DateTime DataAlteracao { get; set; } = DateTime.Now;
+        public DateTime DataAlteracao { get; private set; } = DateTime.Now;
     }
 }

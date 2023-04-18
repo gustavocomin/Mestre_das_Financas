@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using MF.Repository.Configurations.Db;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -20,10 +22,10 @@ namespace MF.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                    .ConfigureApiBehaviorOptions(options =>
-                    {
-                        options.SuppressModelStateInvalidFilter = true;
-                    });
+                    .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
+
+            services.AddDbContext<Contexto>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
 
             //services.AddDbContext<Cursos.Repository.Data.CourseDbContext>(x =>
             //{

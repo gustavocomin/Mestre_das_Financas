@@ -1,6 +1,6 @@
 ﻿using MF.Domain.Commons.ClassesBase;
 
-namespace MF.Domain.ControleMensal.Mercado.Compras
+namespace MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto
 {
     public class DescontoItem : IdBase
     {

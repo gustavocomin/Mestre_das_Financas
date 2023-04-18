@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yBHU+6qHyzLb41YbS5fBmD3DSVvgNisaPXILk/MtMkyQduGcH1V9i/JO9lMjOmDe0yjtnQkHn319n0aIu3HpcQ==",
+  "dgSpecHash": "Hribh+emSJ6u+LqxkidUJNIZ4K02IdrkFrdllNulBxSgfelfl8YW1Ba8YA9DkU1oXqMnmjWkx+RQVyNmtJjmpQ==",
   "success": true,
   "projectFilePath": "E:\\PROGRAMACAO\\C#\\Mestre das finanças - projeto de controle financeiro\\Mestre_das_Financas\\MF\\MF.Repository\\MF.Repository.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,8 @@
     "C:\\Users\\Gustavo\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Gustavo\\.nuget\\packages\\npgsql\\7.0.2\\npgsql.7.0.2.nupkg.sha512",
+    "C:\\Users\\Gustavo\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.3\\npgsql.entityframeworkcore.postgresql.7.0.3.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Gustavo\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"

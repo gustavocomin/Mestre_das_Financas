@@ -24,4 +24,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MF.Repository\MF.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
