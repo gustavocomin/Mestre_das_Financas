@@ -1,4 +1,5 @@
-﻿using MF.Domain.Configuration;
+﻿using MF.Domain.Commons.Usuarios.ViewModel;
+using MF.Domain.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,7 +17,7 @@ namespace MF.infrastructure.Configuration
             _configuration = configuration;
         }
 
-        public string GenerateToken(/*UserViewModel userViewModel*/)
+        public string GenerateToken(UserViewModel userViewModel)
         {
             var secret = Encoding.ASCII.GetBytes(_configuration.GetSection("JwtConfigurations:Secret").Value);
             var symmetricSecurityKey = new SymmetricSecurityKey(secret);
@@ -24,9 +25,9 @@ namespace MF.infrastructure.Configuration
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    //new Claim(ClaimTypes.NameIdentifier, userViewModel.Id.ToString()),
-                    //new Claim(ClaimTypes.NameIdentifier, userViewModel.Login),
-                    //new Claim(ClaimTypes.NameIdentifier, userViewModel.Email)
+                    new Claim(ClaimTypes.NameIdentifier, userViewModel.Id.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, userViewModel.Login),
+                    new Claim(ClaimTypes.NameIdentifier, userViewModel.Email)
                 }),
                 Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature)

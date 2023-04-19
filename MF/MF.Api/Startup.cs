@@ -1,7 +1,6 @@
-﻿using MF.Repository.Configurations.Db;
-using Microsoft.AspNetCore.Authentication;
+﻿using MF.Domain.Configuration;
+using MF.infrastructure.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -18,23 +17,18 @@ namespace MF.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                    .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
-
-            services.AddDbContext<Contexto>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-
-
-            //services.AddDbContext<Cursos.Repository.Data.CourseDbContext>(x =>
-            //{
-            //    x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-            //    options => options.EnableRetryOnFailure());
-            //});
+                    .ConfigureApiBehaviorOptions(options =>
+                    {
+                        options.SuppressModelStateInvalidFilter = true;
+                    });
 
             services.AddSwaggerGen(c =>
             {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "teste" });
+
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT Authorization header using the Bearer scheme (Example: 'Bearer 12345abcdef')",
@@ -83,10 +77,7 @@ namespace MF.Api
                 };
             });
 
-
-            //services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
-            //services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
