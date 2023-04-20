@@ -28,4 +28,16 @@
 		<ProjectReference Include="..\MF.Repository\MF.Repository.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controllers\Commons\Empresas\" />
+	  <Folder Include="Controllers\Commons\ModalidadePagto\CondPagtos\Parcs\" />
+	  <Folder Include="Controllers\Commons\ModalidadePagto\FormaPagtos\" />
+	  <Folder Include="Controllers\Commons\Usuarios\" />
+	  <Folder Include="Controllers\ControleMensal\Despesas\" />
+	  <Folder Include="Controllers\ControleMensal\Mercado\Compras\Itens\Desconto\" />
+	  <Folder Include="Controllers\ControleMensal\Mercado\Itens\MarcaItens\Hist\" />
+	  <Folder Include="Controllers\ControleMensal\Rendas\" />
+	  <Folder Include="Controllers\Planejamento\Itens\" />
+	</ItemGroup>
+
 </Project>

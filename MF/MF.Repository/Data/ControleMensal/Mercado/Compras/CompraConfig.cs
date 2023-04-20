@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Compras
 {
-    public class CompraConfig : IEntityTypeConfigurationIdBase<Compra>
+    public class CompraConfig : EntityTypeConfigurationIdBase<Compra>
     {
         public void Configure(EntityTypeBuilder<Compra> builder)
         {

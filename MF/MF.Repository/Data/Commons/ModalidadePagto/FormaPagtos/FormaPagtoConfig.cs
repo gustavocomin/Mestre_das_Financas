@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.Commons.ModalidadePagto.FormaPagtos
 {
-    public class FormaPagtoConfig : IEntityTypeConfigurationIdBase<FormaPagto>
+    public class FormaPagtoConfig : EntityTypeConfigurationIdBase<FormaPagto>
     {
         public void Configure(EntityTypeBuilder<FormaPagto> builder)
         {

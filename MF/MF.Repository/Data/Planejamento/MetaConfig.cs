@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.Planejamento
 {
-    public class MetaConfig : IEntityTypeConfigurationIdBaseDtAlt<Meta>
+    public class MetaConfig : EntityTypeConfigurationIdBaseDtAlt<Meta>
     {
         public void Configure(EntityTypeBuilder<Meta> builder)
         {

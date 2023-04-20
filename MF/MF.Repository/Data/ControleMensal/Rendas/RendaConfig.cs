@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Rendas
 {
-    public class RendaConfig : IEntityTypeConfigurationIdBaseDtAlt<Renda>
+    public class RendaConfig : EntityTypeConfigurationIdBaseDtAlt<Renda>
     {
         public void Configure(EntityTypeBuilder<Renda> builder)
         {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Itens.MarcaItens
 {
-    public class MarcaItemConfig : IEntityTypeConfigurationIdBaseDtAlt<MarcaItem>
+    public class MarcaItemConfig : EntityTypeConfigurationIdBaseDtAlt<MarcaItem>
     {
         public void Configure(EntityTypeBuilder<MarcaItem> builder)
         {

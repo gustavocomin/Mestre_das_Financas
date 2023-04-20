@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.Commons.Consumirdores
 {
-    public class ConsumidorConfig : IEntityTypeConfigurationIdBaseDtAlt<Consumidor>
+    public class ConsumidorConfig : EntityTypeConfigurationIdBaseDtAlt<Consumidor>
     {
         public void Configure(EntityTypeBuilder<Consumidor> builder)
         {

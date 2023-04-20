@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.Planejamento.Itens
 {
-    public class MetaItemConfig : IEntityTypeConfigurationIdBaseDtAlt<MetaItem>
+    public class MetaItemConfig : EntityTypeConfigurationIdBaseDtAlt<MetaItem>
     {
         public void Configure(EntityTypeBuilder<MetaItem> builder)
         {

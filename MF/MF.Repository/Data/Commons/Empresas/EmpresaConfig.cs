@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.Commons.Empresas
 {
-    public class EmpresaConfig : IEntityTypeConfigurationIdBase<Empresa>
+    public class EmpresaConfig : EntityTypeConfigurationIdBase<Empresa>
     {
         public void Configure(EntityTypeBuilder<Empresa> builder)
         {

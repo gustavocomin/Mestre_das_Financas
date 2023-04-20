@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Compras.Itens.Desconto
 {
-    public class DescontoItemConfig : IEntityTypeConfigurationIdBase<DescontoItem>
+    public class DescontoItemConfig : EntityTypeConfigurationIdBase<DescontoItem>
     {
         public void Configure(EntityTypeBuilder<DescontoItem> builder)
         {

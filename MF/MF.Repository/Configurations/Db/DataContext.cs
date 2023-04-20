@@ -14,6 +14,7 @@ using MF.Domain.Planejamento;
 using MF.Domain.Planejamento.Itens;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace MF.Repository.Configurations.Db
 {
@@ -21,9 +22,7 @@ namespace MF.Repository.Configurations.Db
     {
         public DataContext()
         {
-
         }
-
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
@@ -68,7 +67,22 @@ namespace MF.Repository.Configurations.Db
         {
             modelBuilder.UseSerialColumns();
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            modelBuilder.Entity<Consumidor>();
+            modelBuilder.Entity<Empresa>();
+            modelBuilder.Entity<CondPagto>();
+            modelBuilder.Entity<CondPagtoParcs>();
+            modelBuilder.Entity<FormaPagto>();
+            modelBuilder.Entity<Despesa>();
+            modelBuilder.Entity<Renda>();
+            modelBuilder.Entity<DescontoItem>();
+            modelBuilder.Entity<ItemCompra>();
+            modelBuilder.Entity<Compra>();
+            modelBuilder.Entity<MarcaItem>();
+            modelBuilder.Entity<Item>();
+            modelBuilder.Entity<Meta>();
+            modelBuilder.Entity<MetaItem>();
 
             modelBuilder.Entity<ItemCompra>()
                 .HasOne(p => p.DescontoItem)

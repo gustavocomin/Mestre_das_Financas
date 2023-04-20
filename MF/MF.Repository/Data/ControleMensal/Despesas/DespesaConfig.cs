@@ -3,25 +3,15 @@ using MF.Repository.Configurations.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-//Não funcionou o IEntityTypeConfigurationIdBaseDtAlt nem i do ID
+//Não funcionou o EntityTypeConfigurationIdBaseDtAlt nem i do ID
 
 namespace MF.Repository.Data.ControleMensal.Despesas
 {
-    public class DespesaConfig : IEntityTypeConfigurationIdBaseDtAlt<Despesa>
+    public class DespesaConfig : EntityTypeConfigurationIdBaseDtAlt<Despesa>
     {
         public void Configure(EntityTypeBuilder<Despesa> builder)
         {
             builder.ToTable("DESPESA");
-
-            builder.HasKey(mi => mi.Id);
-
-            builder.Property(t => t.Id)
-                   .HasColumnName("ID_DESPESA");
-
-            builder.Property(mi => mi.DataAlteracao)
-                   .HasColumnName("DATA_ALTERACAO")
-                   .HasColumnType("TIMESTAMP")
-                   .IsRequired();
 
             builder.Property(d => d.Descricao)
                    .HasColumnName("DESCRICAO")

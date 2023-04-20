@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Itens
 {
-    public class ItemConfig : IEntityTypeConfigurationIdBase<Item>
+    public class ItemConfig : EntityTypeConfigurationIdBase<Item>
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {

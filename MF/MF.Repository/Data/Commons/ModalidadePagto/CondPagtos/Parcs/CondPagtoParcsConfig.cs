@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.Commons.ModalidadePagto.CondPagtos.Parcs
 {
-    public class CondPagtoParcsConfig : IEntityTypeConfigurationIdBase<CondPagtoParcs>
+    public class CondPagtoParcsConfig : EntityTypeConfigurationIdBase<CondPagtoParcs>
     {
         public void Configure(EntityTypeBuilder<CondPagtoParcs> builder)
         {
