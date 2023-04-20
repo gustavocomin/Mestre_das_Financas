@@ -4,9 +4,9 @@ using MF.Repository.Configurations.Db;
 
 namespace MF.Repository.Data.ControleMensal.Despesas
 {
-    public class RepDespesa : Rep<Despesa>
+    public class RepDespesa : Rep<Despesa>, IRepDespesa
     {
-        public RepDespesa(Contexto contexto) : base(contexto)
+        public RepDespesa(DataContext contexto) : base(contexto)
         {
         }
     }

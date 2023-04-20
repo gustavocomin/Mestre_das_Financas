@@ -20,9 +20,9 @@ namespace MF.Domain.ControleMensal.Mercado.Compras
         public int CodigoCondPagto { get; set; }
         public int CodigoEmpresa { get; set; }
 
-        public Lazy<Empresa>? Empresa { get; set; }
-        public Lazy<FormaPagto>? FormaPagto { get; set; }
-        public Lazy<CondPagto>? CondPagto { get; set; }
+        public Empresa? Empresa { get; set; }
+        public FormaPagto? FormaPagto { get; set; }
+        public CondPagto? CondPagto { get; set; }
         public List<ItemCompra>? Itens { get; set; }
 
         public void CalculaValorTotalDescontos()

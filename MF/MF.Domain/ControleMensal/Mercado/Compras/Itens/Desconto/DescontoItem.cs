@@ -4,9 +4,9 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto
 {
     public class DescontoItem : IdBase
     {
-        public int CodigoItem { get; set; }
-        public decimal ValorDesconto { get; set; }
+        public int CodigoItemCompra { get; set; }
 
-        public ItemCompra Item { get; set; }
+        public decimal ValorDesconto { get; set; }
+        public ItemCompra ItemCompra { get; set; }
     }
 }

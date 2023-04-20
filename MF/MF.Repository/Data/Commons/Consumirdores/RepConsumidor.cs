@@ -4,9 +4,9 @@ using MF.Repository.Configurations.Db;
 
 namespace MF.Repository.Data.Commons.Consumirdores
 {
-    public class RepConsumidor : Rep<Consumidor>
+    public class RepConsumidor : Rep<Consumidor>, IRepConsumidor
     {
-        public RepConsumidor(Contexto contexto) : base(contexto)
+        public RepConsumidor(DataContext contexto) : base(contexto)
         {
         }
     }

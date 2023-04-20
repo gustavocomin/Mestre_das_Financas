@@ -9,11 +9,11 @@ namespace MF.Domain.Commons.Consumirdores
         public string Nome { get; set; }
         public string Email { get; set; }
         public DateTime? DataNascimento { get; set; }
-        public decimal RendaTotal { get; private set; }
+        public decimal RendaTotal { get; private set; } = 0;
+        public string? Celular { get; set; }
 
         public List<Renda>? Rendas { get; set; }
         public List<Despesa>? Despesas { get; set; }
-
 
         public void AtualizaRenda()
         {

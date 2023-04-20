@@ -9,17 +9,22 @@ using MF.Domain.ControleMensal.Mercado.Compras.Itens;
 using MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto;
 using MF.Domain.ControleMensal.Mercado.Itens;
 using MF.Domain.ControleMensal.Mercado.Itens.MarcaItens;
-using MF.Domain.ControleMensal.Mercado.Itens.MarcaItens.Hist;
 using MF.Domain.ControleMensal.Rendas;
 using MF.Domain.Planejamento;
 using MF.Domain.Planejamento.Itens;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace MF.Repository.Configurations.Db
 {
-    public class Contexto : DbContext
+    public class DataContext : DbContext
     {
-        public Contexto(DbContextOptions<Contexto> options) : base(options)
+        public DataContext()
+        {
+
+        }
+
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
 
@@ -36,10 +41,39 @@ namespace MF.Repository.Configurations.Db
         public DbSet<ItemCompra> ItemCompra { get; set; }
         public DbSet<Compra> Compra { get; set; }
         public DbSet<MarcaItem> MarcaItem { get; set; }
-        public DbSet<MarcaItemHist> MarcaItemHist { get; set; }
         public DbSet<Item> Item { get; set; }
 
         public DbSet<Meta> Meta { get; set; }
         public DbSet<MetaItem> MetaItem { get; set; }
+
+        public bool TestarConexao()
+        {
+            return Database.CanConnect();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(@"E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api")
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.UseSerialColumns();
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
+
+            modelBuilder.Entity<ItemCompra>()
+                .HasOne(p => p.DescontoItem)
+                .WithOne(e => e.ItemCompra)
+                .HasForeignKey<DescontoItem>(e => e.CodigoItemCompra);
+        }
     }
 }

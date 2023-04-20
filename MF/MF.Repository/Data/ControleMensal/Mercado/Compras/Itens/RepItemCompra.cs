@@ -4,9 +4,9 @@ using MF.Repository.Configurations.Db;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Compras.Itens
 {
-    public class RepItemCompra : Rep<ItemCompra>
+    public class RepItemCompra : Rep<ItemCompra>, IRepItemCompra
     {
-        public RepItemCompra(Contexto contexto) : base(contexto)
+        public RepItemCompra(DataContext contexto) : base(contexto)
         {
         }
     }

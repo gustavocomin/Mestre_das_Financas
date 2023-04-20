@@ -22,8 +22,8 @@ namespace MF.Domain.ControleMensal.Despesas
         public int CodigoFormaPagto { get; set; }
         public int CodigoCondPagto { get; set; }
 
-        public Lazy<FormaPagto> FormaPagto { get; set; }
-        public Lazy<CondPagto> CondPagto { get; set; }
+        public FormaPagto FormaPagto { get; set; }
+        public CondPagto CondPagto { get; set; }
         public Consumidor Consumidor { get; set; }
         public Empresa? Empresa { get; set; }
     }

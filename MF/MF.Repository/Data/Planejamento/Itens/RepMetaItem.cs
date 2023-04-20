@@ -4,9 +4,9 @@ using MF.Repository.Configurations.Db;
 
 namespace MF.Repository.Data.Planejamento.Itens
 {
-    public class RepMetaItem : Rep<MetaItem>
+    public class RepMetaItem : Rep<MetaItem>, IRepMetaItem
     {
-        public RepMetaItem(Contexto contexto) : base(contexto)
+        public RepMetaItem(DataContext contexto) : base(contexto)
         {
         }
     }

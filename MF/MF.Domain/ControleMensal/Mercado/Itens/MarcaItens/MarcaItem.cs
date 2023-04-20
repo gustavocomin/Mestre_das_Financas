@@ -1,5 +1,4 @@
 ﻿using MF.Domain.Commons.ClassesBase;
-using MF.Domain.ControleMensal.Mercado.Itens.MarcaItens.Hist;
 
 namespace MF.Domain.ControleMensal.Mercado.Itens.MarcaItens
 {
@@ -7,6 +6,7 @@ namespace MF.Domain.ControleMensal.Mercado.Itens.MarcaItens
     {
         public string Descricao { get; set; }
 
-        public List<MarcaItemHist> Hists { get; set; }
+        public int CodigoItem { get; set; }
+        public Item Item { get; set; }
     }
 }

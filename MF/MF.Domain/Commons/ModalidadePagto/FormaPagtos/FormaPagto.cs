@@ -1,13 +1,9 @@
-﻿using MF.Domain.Commons.ModalidadePagto.CondPagtos;
+﻿using MF.Domain.Commons.ClassesBase;
 
 namespace MF.Domain.Commons.ModalidadePagto.FormaPagtos
 {
-    public class FormaPagto
+    public class FormaPagto : IdBase
     {
         public string Descricao { get; set; }
-
-        public int CodigoCongPagto { get; set; }
-
-        public Lazy<List<CondPagto>> CondPagto { get; set; }
     }
 }

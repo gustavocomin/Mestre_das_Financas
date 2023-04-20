@@ -6,9 +6,9 @@ namespace MF.Repository.Commons
 {
     public class Rep<T> : IRep<T>
     {
-        private readonly Contexto _contexto;
+        private readonly DataContext _contexto;
 
-        public Rep(Contexto contexto)
+        public Rep(DataContext contexto)
         {
             _contexto = contexto;
         }

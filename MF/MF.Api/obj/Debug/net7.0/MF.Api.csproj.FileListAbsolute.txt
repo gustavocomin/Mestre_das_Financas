@@ -39,7 +39,6 @@ E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_d
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\MF.Repository.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\MF.Repository.pdb
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\MF.Domain.pdb
-E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\MF.Api.MvcApplicationPartsAssemblyInfo.cs
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\staticwebassets\msbuild.MF.Api.Microsoft.AspNetCore.StaticWebAssets.props
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\staticwebassets\msbuild.build.MF.Api.props
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.MF.Api.props
@@ -72,3 +71,4 @@ E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_d
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Microsoft.OData.Edm.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Microsoft.OData.ModelBuilder.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\bin\Debug\net7.0\Microsoft.Spatial.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Api\obj\Debug\net7.0\MF.Api.MvcApplicationPartsAssemblyInfo.cs

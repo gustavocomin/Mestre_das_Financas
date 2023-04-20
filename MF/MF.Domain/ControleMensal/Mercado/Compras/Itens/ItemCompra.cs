@@ -11,9 +11,11 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens
         public decimal Quantidade { get; set; }
         public decimal ValorUnitario { get; set; }
         public decimal ValorTotalItem { get; set; }
-        public int CodigoDesconto { get; set; }
 
-        public DescontoItem Desconto { get; set; }
+        public int? CodigoDesconto { get; set; }
+        public DescontoItem DescontoItem { get; set; }
+
+        public Compra Compra { get; set; }
 
         public void CalculaValorTotalItem()
         {

@@ -11,7 +11,7 @@ namespace MF.Domain.ControleMensal.Mercado.Itens.MarcaItens.Hist
         public int CodigoMarcaItem { get; set; }
 
 
-        public Lazy<MarcaItem> MarcaItem { get; set; }
-        public Lazy<Empresa> Empresa { get; set; }
+        public MarcaItem MarcaItem { get; set; }
+        public Empresa Empresa { get; set; }
     }
 }

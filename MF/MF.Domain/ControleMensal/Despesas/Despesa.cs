@@ -12,7 +12,6 @@ namespace MF.Domain.ControleMensal.Despesas
         public decimal Valor { get; set; }
         public TipoDespesa TipoDespesa { get; set; }
         public DateTime DataDespesa { get; set; }
-        public decimal Desconto { get; set; }
         public bool Mensal { get; set; }
         public DateTime? DataInicial { get; set; }
         public DateTime? DataFinal { get; set; }
@@ -22,8 +21,8 @@ namespace MF.Domain.ControleMensal.Despesas
         public int CodigoFormaPagto { get; set; }
         public int CodigoCondPagto { get; set; }
 
-        public Lazy<FormaPagto> FormaPagto { get; set; }
-        public Lazy<CondPagto> CondPagto { get; set; }
+        public FormaPagto FormaPagto { get; set; }
+        public CondPagto CondPagto { get; set; }
         public Consumidor Consumidor { get; set; }
         public Empresa? Empresa { get; set; }
     }

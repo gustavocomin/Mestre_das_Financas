@@ -4,9 +4,9 @@ using MF.Repository.Configurations.Db;
 
 namespace MF.Repository.Data.Commons.Empresas
 {
-    public class RepEmpresa : Rep<Empresa>
+    public class RepEmpresa : Rep<Empresa>, IRepEmpresa
     {
-        public RepEmpresa(Contexto contexto) : base(contexto)
+        public RepEmpresa(DataContext contexto) : base(contexto)
         {
         }
     }

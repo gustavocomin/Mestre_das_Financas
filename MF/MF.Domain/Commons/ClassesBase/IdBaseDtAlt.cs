@@ -2,7 +2,7 @@
 
 namespace MF.Domain.Commons.ClassesBase
 {
-    public class IdBaseDtAlt
+    public class IdBaseDtAlt : IdBase
     {
         public IdBaseDtAlt()
         {

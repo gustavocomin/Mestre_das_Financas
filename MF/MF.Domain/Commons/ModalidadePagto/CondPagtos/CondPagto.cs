@@ -8,7 +8,6 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos
         public string Descricao { get; set; }
         public bool Credito { get; set; }
         public int QuantParc { get; set; }
-        public int CodigoFormaPagto { get; set; }
 
         public List<CondPagtoParcs>? Parcs { get; set; }
     }

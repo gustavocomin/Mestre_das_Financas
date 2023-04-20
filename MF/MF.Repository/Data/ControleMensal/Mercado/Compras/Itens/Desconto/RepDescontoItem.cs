@@ -4,9 +4,9 @@ using MF.Repository.Configurations.Db;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Compras.Itens.Desconto
 {
-    public class RepDescontoItem : Rep<DescontoItem>
+    public class RepDescontoItem : Rep<DescontoItem>, IRepDescontoItem
     {
-        public RepDescontoItem(Contexto contexto) : base(contexto)
+        public RepDescontoItem(DataContext contexto) : base(contexto)
         {
         }
     }

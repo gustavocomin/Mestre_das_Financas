@@ -11,12 +11,17 @@ namespace MF.Domain.Planejamento.Itens
 
         public string Descricao { get; set; }
         public decimal ValorCompra { get; set; }
-        public string LinkCompra { get; set; }
+        public string? LinkCompra { get; set; }
         public decimal ValorReservaCompra { get; set; }
         public decimal DiferencaCompraReserva { get; private set; }
         public DateTime DataExpectativaAquisicao { get; set; }
         public decimal ValorGuardarMes { get; private set; }
         public StatusMetaEItem Status { get; set; }
+
+        public int CodigoMeta { get; set; }
+
+        public Meta Meta { get; set; }
+
 
         public void CalculaValorGuardarMes()
         {

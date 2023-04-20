@@ -1,33 +1,34 @@
-﻿using MF.Domain.Commons.Empresas;
+﻿using MF.Domain.Commons.ClassesBase;
+using MF.Domain.Commons.Empresas;
 using MF.Domain.Commons.ModalidadePagto.CondPagtos;
 using MF.Domain.Commons.ModalidadePagto.FormaPagtos;
 using MF.Domain.ControleMensal.Mercado.Compras.Itens;
 
 namespace MF.Domain.ControleMensal.Mercado.Compras
 {
-    public class Compra
+    public class Compra : IdBase
     {
         public string Descricao { get; set; }
-        public DateTime? DataCompra { get; set; }
+        public DateTime DataCompra { get; set; }
         public decimal ValorTotal { get; private set; }
         public decimal ValorTotalItens { get; private set; }
         public decimal ValorTotalDescontos { get; private set; }
         public decimal ValorTributos { get; set; }
-        public string COO { get; set; }
-        public string CCF { get; set; }
+        public string? COO { get; set; }
+        public string? CCF { get; set; }
 
-        public int CodigoFormaPagto { get; set; }
-        public int CodigoCondPagto { get; set; }
-        public int CodigoEmpresa { get; set; }
+        public int? CodigoFormaPagto { get; set; }
+        public int? CodigoCondPagto { get; set; }
+        public int? CodigoEmpresa { get; set; }
 
-        public Lazy<Empresa>? Empresa { get; set; }
-        public Lazy<FormaPagto>? FormaPagto { get; set; }
-        public Lazy<CondPagto>? CondPagto { get; set; }
+        public Empresa? Empresa { get; set; }
+        public FormaPagto? FormaPagto { get; set; }
+        public CondPagto? CondPagto { get; set; }
         public List<ItemCompra>? Itens { get; set; }
 
         public void CalculaValorTotalDescontos()
         {
-            ValorTotalDescontos = Itens.Sum(x => x.Desconto.ValorDesconto > 0 ? x.Desconto.ValorDesconto : 0);
+            ValorTotalDescontos = Itens.Sum(x => x.DescontoItem.ValorDesconto > 0 ? x.DescontoItem.ValorDesconto : 0);
         }
 
         public void CalculaValorTotalItens()

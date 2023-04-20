@@ -4,9 +4,9 @@ using MF.Repository.Configurations.Db;
 
 namespace MF.Repository.Data.Commons.ModalidadePagto.CondPagtos
 {
-    public class RepCondPagto : Rep<CondPagto>
+    public class RepCondPagto : Rep<CondPagto>, IRepCondPagto
     {
-        public RepCondPagto(Contexto contexto) : base(contexto)
+        public RepCondPagto(DataContext contexto) : base(contexto)
         {
         }
     }

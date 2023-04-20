@@ -8,6 +8,6 @@ namespace MF.Domain.Commons.ModalidadePagto.FormaPagtos
 
         public int CodigoCongPagto { get; set; }
 
-        public Lazy<List<CondPagto>> CondPagto { get; set; }
+        public List<CondPagto> CondPagto { get; set; }
     }
 }
