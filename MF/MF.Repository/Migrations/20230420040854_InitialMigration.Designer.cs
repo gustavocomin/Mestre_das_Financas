@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MF.Repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230420002559_UpdateIdsAndTipoDataAlt")]
-    partial class UpdateIdsAndTipoDataAlt
+    [Migration("20230420040854_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,158 +29,138 @@ namespace MF.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_CONSUMIDOR");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Celular")
-                        .HasMaxLength(12)
-                        .HasColumnType("character varying(12)")
-                        .HasColumnName("CELULAR");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("DATA_ALTERACAO");
 
                     b.Property<DateTime?>("DataNascimento")
-                        .HasColumnType("date")
-                        .HasColumnName("DATA_NASCIMENTO");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)")
-                        .HasColumnName("EMAIL");
+                        .HasColumnType("text");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("character varying(300)")
-                        .HasColumnName("NOME");
+                        .HasColumnType("text");
 
                     b.Property<decimal>("RendaTotal")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("RENDA_TOTAL");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
-                    b.ToTable("CONSUMIDOR", (string)null);
+                    b.ToTable("Consumidor");
                 });
 
             modelBuilder.Entity("MF.Domain.Commons.Empresas.Empresa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_EMPRESA");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bairro")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("BAIRRO");
+                        .HasColumnType("text");
 
                     b.Property<string>("Cidade")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("CIDADE");
+                        .HasColumnType("text");
 
                     b.Property<string>("CnpjEmpresa")
-                        .HasMaxLength(14)
-                        .HasColumnType("character varying(14)")
-                        .HasColumnName("CNPJ_EMPRESA");
+                        .HasColumnType("text");
 
                     b.Property<string>("Complemento")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("COMPLEMENTO");
+                        .HasColumnType("text");
 
                     b.Property<string>("Endereço")
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)")
-                        .HasColumnName("ENDEREÇO");
+                        .HasColumnType("text");
 
                     b.Property<string>("NomeEmpresa")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("NOME_EMPRESA");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("EMPRESA", (string)null);
+                    b.ToTable("Empresa");
                 });
 
             modelBuilder.Entity("MF.Domain.Commons.ModalidadePagto.CondPagtos.CondPagto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_CONDPAGTO");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Credito")
-                        .HasColumnType("boolean")
-                        .HasColumnName("CREDITO");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("text");
 
                     b.Property<int>("QuantParc")
-                        .HasColumnType("int")
-                        .HasColumnName("QUANT_PARC");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.ToTable("CONDPAGTO", (string)null);
+                    b.ToTable("CondPagto");
                 });
 
             modelBuilder.Entity("MF.Domain.Commons.ModalidadePagto.CondPagtos.Parcs.CondPagtoParcs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_CONDPAGTOPARCS");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CodigoCondPagto")
-                        .HasColumnType("int")
-                        .HasColumnName("ID_COND_PAGTO");
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("CondPagtoId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("SeqParc")
-                        .HasColumnType("int")
-                        .HasColumnName("SEQ_PARC");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("ValorParc")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_PARC");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodigoCondPagto");
+                    b.HasIndex("CondPagtoId");
 
-                    b.ToTable("CONDPAGTOPARC", (string)null);
+                    b.ToTable("CondPagtoParcs");
                 });
 
             modelBuilder.Entity("MF.Domain.Commons.ModalidadePagto.FormaPagtos.FormaPagto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_FORMAPAGTO");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("FORMAPAGTO", (string)null);
+                    b.ToTable("FormaPagto");
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Despesas.Despesa", b =>
@@ -263,350 +243,325 @@ namespace MF.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_COMPRA");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CCF")
-                        .HasMaxLength(50)
-                        .HasColumnType("VARCHAR")
-                        .HasColumnName("CCF");
+                        .HasColumnType("text");
 
                     b.Property<string>("COO")
-                        .HasMaxLength(50)
-                        .HasColumnType("VARCHAR")
-                        .HasColumnName("COO");
+                        .HasColumnType("text");
 
                     b.Property<int?>("CodigoCondPagto")
-                        .HasColumnType("int")
-                        .HasColumnName("CODIGO_COND_PAGTO");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("CodigoEmpresa")
-                        .HasColumnType("int")
-                        .HasColumnName("CODIGO_EMPRESA");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("CodigoFormaPagto")
-                        .HasColumnType("int")
-                        .HasColumnName("CODIGO_FORMA_PAGTO");
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("CondPagtoId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("DataCompra")
-                        .HasColumnType("date")
-                        .HasColumnName("DATA_COMPRA");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("VARCHAR")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("text");
+
+                    b.Property<int?>("EmpresaId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("FormaPagtoId")
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("ValorTotal")
-                        .HasColumnType("decimal(10,2)")
-                        .HasColumnName("VALOR_TOTAL");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("ValorTotalDescontos")
-                        .HasColumnType("decimal(10,2)")
-                        .HasColumnName("VALOR_TOTAL_DESCONTOS");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("ValorTotalItens")
-                        .HasColumnType("decimal(10,2)")
-                        .HasColumnName("VALOR_TOTAL_ITENS");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("ValorTributos")
-                        .HasColumnType("decimal(10,2)")
-                        .HasColumnName("VALOR_TRIBUTOS");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodigoCondPagto");
+                    b.HasIndex("CondPagtoId");
 
-                    b.HasIndex("CodigoEmpresa");
+                    b.HasIndex("EmpresaId");
 
-                    b.HasIndex("CodigoFormaPagto");
+                    b.HasIndex("FormaPagtoId");
 
-                    b.ToTable("COMPRA", (string)null);
+                    b.ToTable("Compra");
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto.DescontoItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_DESCONTOITEM");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CodigoItemCompra")
-                        .HasColumnType("int")
-                        .HasColumnName("ID_ITEM_COMPRA");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("ValorDesconto")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_DESCONTO");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CodigoItemCompra")
                         .IsUnique();
 
-                    b.ToTable("DESCONTOITEM", (string)null);
+                    b.ToTable("DescontoItem");
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Mercado.Compras.Itens.ItemCompra", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_ITEMCOMPRA");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CodigoCompra")
-                        .HasColumnType("INT")
-                        .HasColumnName("CODIGO_COMPRA");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("CodigoDesconto")
-                        .HasColumnType("INT")
-                        .HasColumnName("CODIGO_DESCONTO");
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CompraId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("DATA_ALTERACAO");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("text");
 
                     b.Property<decimal>("Quantidade")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("QUANT");
+                        .HasColumnType("numeric");
 
                     b.Property<int>("SequencialItem")
-                        .HasColumnType("INT")
-                        .HasColumnName("SEQ_ITEM");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("ValorTotalItem")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_TOTAL_ITEM");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("ValorUnitario")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_UNIT");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodigoCompra");
+                    b.HasIndex("CompraId");
 
-                    b.ToTable("ITEMCOMPRA", (string)null);
+                    b.ToTable("ItemCompra");
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Mercado.Itens.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_ITEM");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ITEM", (string)null);
+                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Mercado.Itens.MarcaItens.MarcaItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_MARCAITEM");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CodigoItem")
-                        .HasColumnType("int")
-                        .HasColumnName("CODIGO_ITEM");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("DATA_ALTERACAO");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("text");
 
-                    b.Property<int?>("ItemId")
+                    b.Property<int>("ItemId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodigoItem");
-
                     b.HasIndex("ItemId");
 
-                    b.ToTable("MARCAITEM", (string)null);
+                    b.ToTable("MarcaItem");
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Rendas.Renda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_RENDA");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CodigoConsumidor")
-                        .HasColumnType("int")
-                        .HasColumnName("CODIGO_CONSUMIDOR");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("CodigoEmpresa")
-                        .HasColumnType("int")
-                        .HasColumnName("CODIGO_EMPRESA");
+                        .HasColumnType("integer");
 
-                    b.Property<int?>("ConsumidorId")
+                    b.Property<int>("ConsumidorId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("DATA_ALTERACAO");
 
                     b.Property<int>("Descricao")
-                        .HasMaxLength(100)
-                        .HasColumnType("integer")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("EmpresaId")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("Salario")
-                        .HasColumnType("boolean")
-                        .HasColumnName("SALARIO");
+                        .HasColumnType("boolean");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodigoConsumidor");
-
-                    b.HasIndex("CodigoEmpresa");
-
                     b.HasIndex("ConsumidorId");
 
-                    b.ToTable("RENDA", (string)null);
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Renda");
                 });
 
             modelBuilder.Entity("MF.Domain.Planejamento.Itens.MetaItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_METAITEM");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CodigoMeta")
-                        .HasColumnType("INT")
-                        .HasColumnName("CODIGO_META");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("DATA_ALTERACAO");
 
                     b.Property<DateTime>("DataExpectativaAquisicao")
-                        .HasColumnType("date")
-                        .HasColumnName("DATA_EXPECTATIVA_AQUISICAO");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("text");
 
                     b.Property<decimal>("DiferencaCompraReserva")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("DIFERENCA_COMPRA_RESERVA");
+                        .HasColumnType("numeric");
 
                     b.Property<string>("LinkCompra")
-                        .HasMaxLength(900)
-                        .HasColumnType("varchar")
-                        .HasColumnName("LINK_COMPRA");
+                        .HasColumnType("text");
+
+                    b.Property<int>("MetaId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Status")
-                        .HasColumnType("integer")
-                        .HasColumnName("STATUS");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("ValorCompra")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_COMPRA");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("ValorGuardarMes")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_GUARDAR_MES");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("ValorReservaCompra")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_RESERVA_COMPRA");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodigoMeta");
+                    b.HasIndex("MetaId");
 
-                    b.ToTable("METAITEM", (string)null);
+                    b.ToTable("MetaItem");
                 });
 
             modelBuilder.Entity("MF.Domain.Planejamento.Meta", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("ID_META");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CodigoConsumidor")
                         .HasColumnType("integer");
 
+                    b.Property<int>("ConsumidorId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("DATA_ALTERACAO");
 
                     b.Property<DateTime?>("DataFimVigencia")
-                        .HasColumnType("date")
-                        .HasColumnName("DATA_FIM_VIGENCIA");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("DataIniVigencia")
-                        .HasColumnType("date")
-                        .HasColumnName("DATA_INI_VIGENCIA");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("text");
 
                     b.Property<int>("Status")
-                        .HasColumnType("integer")
-                        .HasColumnName("STATUS");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("ValorTotalCompra")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_TOTAL_COMPRA");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("ValorTotalGuardado")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("VALOR_TOTAL_GUARDADO");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodigoConsumidor");
+                    b.HasIndex("ConsumidorId");
 
-                    b.ToTable("META", (string)null);
+                    b.ToTable("Meta");
                 });
 
             modelBuilder.Entity("MF.Domain.Commons.ModalidadePagto.CondPagtos.Parcs.CondPagtoParcs", b =>
                 {
                     b.HasOne("MF.Domain.Commons.ModalidadePagto.CondPagtos.CondPagto", null)
                         .WithMany("Parcs")
-                        .HasForeignKey("CodigoCondPagto")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CondPagtoId");
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Despesas.Despesa", b =>
@@ -621,7 +576,8 @@ namespace MF.Repository.Migrations
                         .WithMany()
                         .HasForeignKey("CodigoConsumidor")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_DESPESA_CONSUMIDOR");
 
                     b.HasOne("MF.Domain.Commons.Empresas.Empresa", "Empresa")
                         .WithMany()
@@ -652,15 +608,15 @@ namespace MF.Repository.Migrations
                 {
                     b.HasOne("MF.Domain.Commons.ModalidadePagto.CondPagtos.CondPagto", "CondPagto")
                         .WithMany()
-                        .HasForeignKey("CodigoCondPagto");
+                        .HasForeignKey("CondPagtoId");
 
                     b.HasOne("MF.Domain.Commons.Empresas.Empresa", "Empresa")
                         .WithMany()
-                        .HasForeignKey("CodigoEmpresa");
+                        .HasForeignKey("EmpresaId");
 
                     b.HasOne("MF.Domain.Commons.ModalidadePagto.FormaPagtos.FormaPagto", "FormaPagto")
                         .WithMany()
-                        .HasForeignKey("CodigoFormaPagto");
+                        .HasForeignKey("FormaPagtoId");
 
                     b.Navigation("CondPagto");
 
@@ -674,7 +630,7 @@ namespace MF.Repository.Migrations
                     b.HasOne("MF.Domain.ControleMensal.Mercado.Compras.Itens.ItemCompra", "ItemCompra")
                         .WithOne("DescontoItem")
                         .HasForeignKey("MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto.DescontoItem", "CodigoItemCompra")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ItemCompra");
@@ -684,8 +640,8 @@ namespace MF.Repository.Migrations
                 {
                     b.HasOne("MF.Domain.ControleMensal.Mercado.Compras.Compra", "Compra")
                         .WithMany("Itens")
-                        .HasForeignKey("CodigoCompra")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("CompraId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Compra");
@@ -694,14 +650,10 @@ namespace MF.Repository.Migrations
             modelBuilder.Entity("MF.Domain.ControleMensal.Mercado.Itens.MarcaItens.MarcaItem", b =>
                 {
                     b.HasOne("MF.Domain.ControleMensal.Mercado.Itens.Item", "Item")
-                        .WithMany()
-                        .HasForeignKey("CodigoItem")
+                        .WithMany("MarcaItens")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("MF.Domain.ControleMensal.Mercado.Itens.Item", null)
-                        .WithMany("MarcaItens")
-                        .HasForeignKey("ItemId");
 
                     b.Navigation("Item");
                 });
@@ -709,19 +661,14 @@ namespace MF.Repository.Migrations
             modelBuilder.Entity("MF.Domain.ControleMensal.Rendas.Renda", b =>
                 {
                     b.HasOne("MF.Domain.Commons.Consumirdores.Consumidor", "Consumidor")
-                        .WithMany()
-                        .HasForeignKey("CodigoConsumidor")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithMany("Rendas")
+                        .HasForeignKey("ConsumidorId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MF.Domain.Commons.Empresas.Empresa", "Empresa")
                         .WithMany()
-                        .HasForeignKey("CodigoEmpresa")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("MF.Domain.Commons.Consumirdores.Consumidor", null)
-                        .WithMany("Rendas")
-                        .HasForeignKey("ConsumidorId");
+                        .HasForeignKey("EmpresaId");
 
                     b.Navigation("Consumidor");
 
@@ -732,7 +679,7 @@ namespace MF.Repository.Migrations
                 {
                     b.HasOne("MF.Domain.Planejamento.Meta", "Meta")
                         .WithMany("Itens")
-                        .HasForeignKey("CodigoMeta")
+                        .HasForeignKey("MetaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -743,8 +690,8 @@ namespace MF.Repository.Migrations
                 {
                     b.HasOne("MF.Domain.Commons.Consumirdores.Consumidor", "Consumidor")
                         .WithMany()
-                        .HasForeignKey("CodigoConsumidor")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("ConsumidorId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Consumidor");
@@ -769,7 +716,8 @@ namespace MF.Repository.Migrations
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Mercado.Compras.Itens.ItemCompra", b =>
                 {
-                    b.Navigation("DescontoItem");
+                    b.Navigation("DescontoItem")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Mercado.Itens.Item", b =>

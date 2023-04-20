@@ -164,72 +164,76 @@ namespace MF.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("ID_DESPESA");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CodigoCondPagto")
-                        .HasColumnType("integer");
+                        .HasColumnType("int")
+                        .HasColumnName("CODIGO_COND_PAGTO");
 
                     b.Property<int>("CodigoConsumidor")
-                        .HasColumnType("integer");
+                        .HasColumnType("int")
+                        .HasColumnName("CODIGO_CONSUMIDOR");
 
                     b.Property<int?>("CodigoEmpresa")
-                        .HasColumnType("integer");
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("CODIGO_EMPRESA");
 
                     b.Property<int>("CodigoFormaPagto")
-                        .HasColumnType("integer");
+                        .HasColumnType("int")
+                        .HasColumnName("CODIGO_FORMA_PAGTO");
 
-                    b.Property<int>("CondPagtoId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ConsumidorId")
+                    b.Property<int?>("ConsumidorId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("TIMESTAMP")
-                        .HasColumnName("DATA_ALTERACAO");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataDespesa")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("date")
+                        .HasColumnName("DATA_DESPESA");
 
                     b.Property<DateTime?>("DataFinal")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("date")
+                        .HasColumnName("DATA_FINAL");
 
                     b.Property<DateTime?>("DataInicial")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("date")
+                        .HasColumnName("DATA_INICIAL");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("EmpresaId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("FormaPagtoId")
-                        .HasColumnType("integer");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar")
+                        .HasColumnName("DESCRICAO");
 
                     b.Property<bool>("Mensal")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("MENSAL");
 
                     b.Property<int>("TipoDespesa")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("TIPO_DESPESA");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("VALOR");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CondPagtoId");
+                    b.HasIndex("CodigoCondPagto");
+
+                    b.HasIndex("CodigoConsumidor");
+
+                    b.HasIndex("CodigoEmpresa");
+
+                    b.HasIndex("CodigoFormaPagto");
 
                     b.HasIndex("ConsumidorId");
 
-                    b.HasIndex("EmpresaId");
-
-                    b.HasIndex("FormaPagtoId");
-
-                    b.ToTable("Despesa");
+                    b.ToTable("DESPESA", (string)null);
                 });
 
             modelBuilder.Entity("MF.Domain.ControleMensal.Mercado.Compras.Compra", b =>
@@ -561,25 +565,32 @@ namespace MF.Repository.Migrations
                 {
                     b.HasOne("MF.Domain.Commons.ModalidadePagto.CondPagtos.CondPagto", "CondPagto")
                         .WithMany()
-                        .HasForeignKey("CondPagtoId")
+                        .HasForeignKey("CodigoCondPagto")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MF.Domain.Commons.Consumirdores.Consumidor", "Consumidor")
-                        .WithMany("Despesas")
-                        .HasForeignKey("ConsumidorId")
+                        .WithMany()
+                        .HasForeignKey("CodigoConsumidor")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_DESPESA_CONSUMIDOR");
 
                     b.HasOne("MF.Domain.Commons.Empresas.Empresa", "Empresa")
                         .WithMany()
-                        .HasForeignKey("EmpresaId");
+                        .HasForeignKey("CodigoEmpresa")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MF.Domain.Commons.ModalidadePagto.FormaPagtos.FormaPagto", "FormaPagto")
                         .WithMany()
-                        .HasForeignKey("FormaPagtoId")
+                        .HasForeignKey("CodigoFormaPagto")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("MF.Domain.Commons.Consumirdores.Consumidor", null)
+                        .WithMany("Despesas")
+                        .HasForeignKey("ConsumidorId");
 
                     b.Navigation("CondPagto");
 

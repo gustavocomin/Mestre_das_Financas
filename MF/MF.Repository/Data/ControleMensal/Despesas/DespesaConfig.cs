@@ -1,5 +1,4 @@
 ﻿using MF.Domain.ControleMensal.Despesas;
-using MF.Repository.Configurations.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -7,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Despesas
 {
-    public class DespesaConfig : EntityTypeConfigurationIdBaseDtAlt<Despesa>
+    public class DespesaConfig : IEntityTypeConfiguration<Despesa>
     {
         public void Configure(EntityTypeBuilder<Despesa> builder)
         {
@@ -77,6 +76,7 @@ namespace MF.Repository.Data.ControleMensal.Despesas
             builder.HasOne(d => d.Consumidor)
                    .WithMany()
                    .HasForeignKey(d => d.CodigoConsumidor)
+                   .HasConstraintName("FK_DESPESA_CONSUMIDOR")
                    .IsRequired();
 
             builder.HasOne(d => d.Empresa)
