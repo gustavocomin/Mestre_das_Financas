@@ -3,6 +3,7 @@ using System;
 using MF.Repository.Configurations.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MF.Repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230420002842_UpdateTeste")]
+    partial class UpdateTeste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,8 +187,7 @@ namespace MF.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("ID_DESPESA");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
@@ -210,8 +212,7 @@ namespace MF.Repository.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("TIMESTAMP")
-                        .HasColumnName("DATA_ALTERACAO");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataDespesa")
                         .HasColumnType("date")
