@@ -12,7 +12,6 @@ namespace MF.Repository.Data.ControleMensal.Mercado.Itens
             builder.ToTable("ITEM");
 
             builder.Property(e => e.Descricao)
-                   .HasColumnName("DESCRICAO")
                    .HasMaxLength(200)
                    .IsRequired();
 

@@ -1,48 +1,46 @@
-﻿using MF.Domain.ControleMensal.Rendas;
-using MF.Repository.Configurations.Entity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MF.Repository.Data.ControleMensal.Rendas
+public class RendaConfig : IEntityTypeConfiguration<Renda>
 {
-    public class RendaConfig : EntityTypeConfigurationIdBaseDtAlt<Renda>
+    public void Configure(EntityTypeBuilder<Renda> builder)
     {
-        public void Configure(EntityTypeBuilder<Renda> builder)
-        {
-            builder.ToTable("RENDA");
+        builder.ToTable("RENDA");
 
-            builder.Property(e => e.Descricao)
-                   .HasColumnName("DESCRICAO")
-                   .HasMaxLength(100)
-                   .IsRequired();
+        string idColumnName = $"Id{builder.Metadata.ClrType.Name}";
 
-            builder.Property(e => e.Valor)
-                   .HasColumnName("VALOR")
-                   .HasColumnType("decimal(18,2)")
-                   .IsRequired();
+        builder.HasKey(mi => mi.Id);
 
-            builder.Property(e => e.Salario)
-                   .HasColumnName("SALARIO")
-                   .IsRequired();
+        builder.Property(t => t.Id)
+               .HasColumnName(idColumnName);
 
-            builder.Property(e => e.CodigoEmpresa)
-                   .HasColumnName("CODIGO_EMPRESA")
-                   .HasColumnType("int");
+        builder.Property(mi => mi.DataAlteracao)
+               .HasColumnType("TIMESTAMP")
+               .IsRequired();
 
-            builder.Property(e => e.CodigoConsumidor)
-                   .HasColumnName("CODIGO_CONSUMIDOR")
-                   .HasColumnType("int")
-                   .IsRequired();
+        builder.Property(e => e.Descricao)
+               .HasMaxLength(100)
+               .IsRequired();
 
-            builder.HasOne(d => d.Empresa)
-                   .WithMany()
-                   .HasForeignKey(d => d.CodigoEmpresa)
-                   .OnDelete(DeleteBehavior.Restrict);
+        builder.Property(e => e.Valor)
+               .HasColumnType("decimal(18,2)")
+               .IsRequired();
 
-            builder.HasOne(d => d.Consumidor)
-                   .WithMany()
-                   .HasForeignKey(d => d.CodigoConsumidor)
-                   .OnDelete(DeleteBehavior.Restrict);
-        }
+        builder.Property(e => e.Salario)
+               .IsRequired();
+
+        builder.Property(d => d.CodigoConsumidor)
+               .HasColumnName("CodigoConsumidor");
+
+        builder.HasOne(d => d.Empresa)
+               .WithMany()
+               .HasForeignKey(d => d.CodigoEmpresa)
+               .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(d => d.Consumidor)
+               .WithMany(x => x.Rendas)
+               .HasForeignKey(d => d.CodigoConsumidor)
+               .HasConstraintName("FK_DESPESA_CONSUMIDOR")
+               .OnDelete(DeleteBehavior.Restrict);
     }
 }

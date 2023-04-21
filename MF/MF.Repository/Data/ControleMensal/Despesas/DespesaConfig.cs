@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-//Não funcionou o EntityTypeConfigurationIdBaseDtAlt nem i do ID
-
 namespace MF.Repository.Data.ControleMensal.Despesas
 {
     public class DespesaConfig : IEntityTypeConfiguration<Despesa>
@@ -12,54 +10,54 @@ namespace MF.Repository.Data.ControleMensal.Despesas
         {
             builder.ToTable("DESPESA");
 
+            string idColumnName = $"Id{builder.Metadata.ClrType.Name}";
+
+            builder.HasKey(mi => mi.Id);
+
+            builder.Property(t => t.Id)
+                   .HasColumnName(idColumnName);
+
+            builder.Property(mi => mi.DataAlteracao)
+                   .HasColumnType("TIMESTAMP")
+                   .IsRequired();
+
             builder.Property(d => d.Descricao)
-                   .HasColumnName("DESCRICAO")
                    .HasColumnType("varchar")
                    .HasMaxLength(100)
                    .IsRequired();
 
             builder.Property(d => d.Valor)
-                   .HasColumnName("VALOR")
                    .HasColumnType("decimal(18,2)")
                    .IsRequired();
 
             builder.Property(d => d.TipoDespesa)
-                   .HasColumnName("TIPO_DESPESA")
                    .IsRequired();
 
             builder.Property(d => d.DataDespesa)
-                   .HasColumnName("DATA_DESPESA")
                    .HasColumnType("date")
                    .IsRequired();
 
             builder.Property(d => d.Mensal)
-                   .HasColumnName("MENSAL")
                    .IsRequired();
 
             builder.Property(d => d.DataInicial)
-                   .HasColumnName("DATA_INICIAL")
                    .HasColumnType("date");
 
             builder.Property(d => d.DataFinal)
-                   .HasColumnName("DATA_FINAL")
                    .HasColumnType("date");
 
             builder.Property(t => t.CodigoEmpresa)
-                   .HasColumnType("int")
-                   .HasColumnName("CODIGO_EMPRESA");
+                   .HasColumnType("int");
 
             builder.Property(t => t.CodigoConsumidor)
-                   .HasColumnName("CODIGO_CONSUMIDOR")
                    .HasColumnType("int")
                    .IsRequired();
 
             builder.Property(t => t.CodigoFormaPagto)
-                   .HasColumnName("CODIGO_FORMA_PAGTO")
                    .HasColumnType("int")
                    .IsRequired();
 
             builder.Property(t => t.CodigoCondPagto)
-                   .HasColumnName("CODIGO_COND_PAGTO")
                    .HasColumnType("int")
                    .IsRequired();
 
@@ -76,13 +74,12 @@ namespace MF.Repository.Data.ControleMensal.Despesas
             builder.HasOne(d => d.Consumidor)
                    .WithMany()
                    .HasForeignKey(d => d.CodigoConsumidor)
-                   .HasConstraintName("FK_DESPESA_CONSUMIDOR")
                    .IsRequired();
 
             builder.HasOne(d => d.Empresa)
-               .WithMany()
-               .HasForeignKey(d => d.CodigoEmpresa)
-               .IsRequired();
+                   .WithMany()
+                   .HasForeignKey(d => d.CodigoEmpresa)
+                   .IsRequired();
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using MF.Domain.Commons.ClassesBase;
 using MF.Domain.ControleMensal.Despesas;
-using MF.Domain.ControleMensal.Rendas;
 
 namespace MF.Domain.Commons.Consumirdores
 {
@@ -12,8 +11,8 @@ namespace MF.Domain.Commons.Consumirdores
         public decimal RendaTotal { get; private set; } = 0;
         public string? Celular { get; set; }
 
-        public List<Renda>? Rendas { get; set; }
-        public List<Despesa>? Despesas { get; set; }
+        public List<Renda> Rendas { get; set; }
+        public List<Despesa> Despesas { get; set; }
 
         public void AtualizaRenda()
         {

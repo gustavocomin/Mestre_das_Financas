@@ -12,56 +12,45 @@ namespace MF.Repository.Data.ControleMensal.Mercado.Compras
             builder.ToTable("COMPRA");
 
             builder.Property(c => c.Descricao)
-                   .HasColumnName("DESCRICAO")
                    .HasColumnType("VARCHAR")
                    .HasMaxLength(50)
                    .IsRequired();
 
             builder.Property(c => c.DataCompra)
-                   .HasColumnName("DATA_COMPRA")
                    .HasColumnType("date")
                    .IsRequired();
 
             builder.Property(c => c.ValorTotal)
-                   .HasColumnName("VALOR_TOTAL")
                    .HasColumnType("decimal(10,2)")
                    .IsRequired();
 
             builder.Property(c => c.ValorTotalItens)
-                   .HasColumnName("VALOR_TOTAL_ITENS")
                    .HasColumnType("decimal(10,2)")
                    .IsRequired();
 
             builder.Property(c => c.ValorTotalDescontos)
-                   .HasColumnName("VALOR_TOTAL_DESCONTOS")
                    .HasColumnType("decimal(10,2)")
                    .IsRequired();
 
             builder.Property(c => c.ValorTributos)
-                   .HasColumnName("VALOR_TRIBUTOS")
                    .HasColumnType("decimal(10,2)")
                    .IsRequired();
 
             builder.Property(c => c.COO)
-                   .HasColumnName("COO")
                    .HasColumnType("VARCHAR")
                    .HasMaxLength(50);
 
             builder.Property(c => c.CCF)
-                   .HasColumnName("CCF")
                    .HasColumnType("VARCHAR")
                    .HasMaxLength(50);
 
             builder.Property(c => c.CodigoFormaPagto)
-                   .HasColumnName("CODIGO_FORMA_PAGTO")
                    .HasColumnType("int");
 
             builder.Property(c => c.CodigoCondPagto)
-                   .HasColumnName("CODIGO_COND_PAGTO")
                    .HasColumnType("int");
 
             builder.Property(c => c.CodigoEmpresa)
-                   .HasColumnName("CODIGO_EMPRESA")
                    .HasColumnType("int");
 
             builder.HasOne(c => c.Empresa)

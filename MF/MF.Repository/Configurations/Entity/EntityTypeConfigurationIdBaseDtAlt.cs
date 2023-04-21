@@ -11,7 +11,6 @@ namespace MF.Repository.Configurations.Entity
             base.Configure(builder);
 
             builder.Property(mi => mi.DataAlteracao)
-                   .HasColumnName("DATA_ALTERACAO")
                    .HasColumnType("TIMESTAMP")
                    .IsRequired();
         }

@@ -1,10 +1,11 @@
 ﻿using MF.Domain.Commons.ClassesBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 
 namespace MF.Repository.Configurations.Entity
 {
-    public class EntityTypeConfigurationIdBase<T> : IEntityTypeConfiguration<T> where T : IdBase
+    public class EntityTypeConfigurationIdBase<T> : EntityTypeConfiguration<T> where T : IdBase
     {
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {

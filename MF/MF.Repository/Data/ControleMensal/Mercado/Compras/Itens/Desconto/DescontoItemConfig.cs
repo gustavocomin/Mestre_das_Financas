@@ -13,12 +13,10 @@ namespace MF.Repository.Data.ControleMensal.Mercado.Compras.Itens.Desconto
             builder.ToTable("DESCONTOITEM");
 
             builder.Property(d => d.CodigoItemCompra)
-                   .HasColumnName("ID_ITEM_COMPRA")
                    .HasColumnType("int")
                    .IsRequired();
 
             builder.Property(d => d.ValorDesconto)
-                   .HasColumnName("VALOR_DESCONTO")
                    .HasColumnType("decimal(18,2)")
                    .IsRequired();
 

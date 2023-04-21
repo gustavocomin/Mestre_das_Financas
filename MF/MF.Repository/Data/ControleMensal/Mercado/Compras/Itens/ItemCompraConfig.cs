@@ -12,42 +12,34 @@ namespace MF.Repository.Data.ControleMensal.Mercado.Compras.Itens
             builder.ToTable("ITEMCOMPRA");
 
             builder.Property(x => x.CodigoCompra)
-                   .HasColumnName("ID_COMPRA")
                    .HasColumnType("INT")
                    .IsRequired();
 
             builder.Property(x => x.SequencialItem)
-                   .HasColumnName("SEQ_ITEM")
                    .HasColumnType("INT")
                    .IsRequired();
 
             builder.Property(x => x.Descricao)
-                   .HasColumnName("DESCRICAO")
                    .HasMaxLength(200)
                    .IsRequired();
 
             builder.Property(x => x.Quantidade)
-                   .HasColumnName("QUANT")
                    .HasColumnType("decimal(18,2)")
                    .IsRequired();
 
             builder.Property(x => x.ValorUnitario)
-                   .HasColumnName("VALOR_UNIT")
                    .HasColumnType("decimal(18,2)")
                    .IsRequired();
 
             builder.Property(x => x.ValorTotalItem)
-                   .HasColumnName("VALOR_TOTAL_ITEM")
                    .HasColumnType("decimal(18,2)")
                    .IsRequired();
 
             builder.Property(x => x.CodigoCompra)
-                   .HasColumnName("CODIGO_COMPRA")
                    .HasColumnType("INT")
                    .IsRequired();
 
             builder.Property(x => x.CodigoDesconto)
-                   .HasColumnName("CODIGO_DESCONTO")
                    .HasColumnType("INT");
 
             builder.HasOne(ic => ic.Compra)

@@ -12,12 +12,10 @@ namespace MF.Repository.Data.ControleMensal.Mercado.Itens.MarcaItens
             builder.ToTable("MARCAITEM");
 
             builder.Property(x => x.Descricao)
-                   .HasColumnName("DESCRICAO")
                    .HasMaxLength(50)
                    .IsRequired();
 
             builder.Property(e => e.CodigoItem)
-                   .HasColumnName("CODIGO_ITEM")
                    .HasColumnType("int")
                    .IsRequired();
 
