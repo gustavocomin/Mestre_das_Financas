@@ -1,6 +1,7 @@
 ﻿using MF.Domain.Commons.ClassesBase;
 using MF.Domain.Commons.Consumirdores;
 using MF.Domain.Commons.Empresas;
+using MF.Domain.ControleMensal.Rendas.Models;
 
 namespace MF.Domain.ControleMensal.Rendas
 {
@@ -15,5 +16,18 @@ namespace MF.Domain.ControleMensal.Rendas
 
         public virtual Empresa Empresa { get; set; }
         public virtual Consumidor Consumidor { get; set; }
+
+        public Renda()
+        {
+        }
+
+        public Renda(RendaDto renda)
+        {
+            Descricao = renda.Descricao;
+            Valor = renda.Valor;
+            Salario = renda.Salario;
+            CodigoEmpresa = renda.CodigoEmpresa;
+            CodigoConsumidor = renda.CodigoConsumidor;
+        }
     }
 }

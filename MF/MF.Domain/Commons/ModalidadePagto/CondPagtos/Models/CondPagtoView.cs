@@ -11,6 +11,10 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos.Models
 
         public List<CondPagtoParcsView>? Parcs { get; set; }
 
+        public CondPagtoView()
+        {
+        }
+
         public CondPagtoView(CondPagto condPagto)
         {
             Id = condPagto.Id;
@@ -18,6 +22,16 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos.Models
             Credito = condPagto.Credito;
             QuantParc = condPagto.QuantParc;
             Parcs = (condPagto.Parcs != null && condPagto.Parcs.Count > 0) ? new CondPagtoParcsView().ListCondPagtoParcsView(condPagto.Parcs) : null;
+        }
+
+        public List<CondPagtoView> ListCondPagtoView(List<CondPagto> condPagtos)
+        {
+            List<CondPagtoView> list = new();
+            condPagtos.ForEach(condPagto =>
+            {
+                list.Add(new CondPagtoView(condPagto));
+            });
+            return list;
         }
     }
 }

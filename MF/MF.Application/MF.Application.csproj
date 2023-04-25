@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Commons\ModalidadePagto\CondPagtos\" />
+    <Folder Include="Commons\ModalidadePagto\FormaPagtos\" />
+    <Folder Include="Commons\Usuarios\" />
+    <Folder Include="ControleMensal\Despesas\" />
+    <Folder Include="ControleMensal\Mercado\Compras\Itens\Desconto\" />
+    <Folder Include="ControleMensal\Mercado\Itens\MarcaItens\" />
+    <Folder Include="ControleMensal\Rendas\" />
+    <Folder Include="Planejamento\Itens\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MF.Domain\MF.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

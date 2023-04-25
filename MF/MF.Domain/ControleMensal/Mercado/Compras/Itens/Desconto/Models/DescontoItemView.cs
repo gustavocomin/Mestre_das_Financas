@@ -16,6 +16,7 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto.Models
 
         public DescontoItemView(DescontoItem descontoItem)
         {
+            Id = descontoItem.Id;
             CodigoItemCompra = descontoItem.CodigoItemCompra;
             ValorDesconto = descontoItem.ValorDesconto;
             ItemCompra = new ItemCompraView(descontoItem.ItemCompra);

@@ -3,6 +3,7 @@ using MF.Domain.Commons.Consumirdores;
 using MF.Domain.Commons.Empresas;
 using MF.Domain.Commons.ModalidadePagto.CondPagtos;
 using MF.Domain.Commons.ModalidadePagto.FormaPagtos;
+using MF.Domain.ControleMensal.Despesas.Models;
 using System.ComponentModel;
 
 namespace MF.Domain.ControleMensal.Despesas
@@ -26,6 +27,25 @@ namespace MF.Domain.ControleMensal.Despesas
         public CondPagto CondPagto { get; set; }
         public Consumidor Consumidor { get; set; }
         public Empresa? Empresa { get; set; }
+
+        public Despesa()
+        {
+        }
+
+        public Despesa(DespesaDto despesa)
+        {
+            Descricao = despesa.Descricao;
+            Valor = despesa.Valor;
+            TipoDespesa = despesa.TipoDespesa;
+            DataDespesa = despesa.DataDespesa;
+            Mensal = despesa.Mensal;
+            DataInicial = despesa.DataInicial;
+            DataFinal = despesa.DataFinal;
+            CodigoEmpresa = despesa.CodigoEmpresa;
+            CodigoConsumidor = despesa.CodigoConsumidor;
+            CodigoFormaPagto = despesa.CodigoFormaPagto;
+            CodigoCondPagto = despesa.CodigoCondPagto;
+        }
     }
 
     public enum TipoDespesa

@@ -15,6 +15,10 @@ namespace MF.Domain.Commons.Consumirdores.Models
         public List<RendaView> Rendas { get; set; }
         public List<DespesaView> Despesas { get; set; }
 
+        public ConsumidorView()
+        {
+        }
+
         public ConsumidorView(Consumidor consumidor)
         {
             Id = consumidor.Id;
@@ -25,6 +29,16 @@ namespace MF.Domain.Commons.Consumirdores.Models
             Celular = consumidor.Celular;
             Rendas = new RendaView().ListRendaView(consumidor.Rendas);
             Despesas = new DespesaView().ListDespesaView(consumidor.Despesas);
+        }
+
+        public List<ConsumidorView> ListConsumidorView(List<Consumidor> consumidores)
+        {
+            List<ConsumidorView> list = new();
+            consumidores.ForEach(con =>
+            {
+                list.Add(new ConsumidorView(con));
+            });
+            return list;
         }
     }
 }

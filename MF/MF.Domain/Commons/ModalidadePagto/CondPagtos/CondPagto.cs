@@ -1,4 +1,5 @@
 ﻿using MF.Domain.Commons.ClassesBase;
+using MF.Domain.Commons.ModalidadePagto.CondPagtos.Models;
 using MF.Domain.Commons.ModalidadePagto.CondPagtos.Parcs;
 
 namespace MF.Domain.Commons.ModalidadePagto.CondPagtos
@@ -10,5 +11,16 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos
         public int QuantParc { get; set; }
 
         public List<CondPagtoParcs>? Parcs { get; set; }
+
+        public CondPagto()
+        {
+        }
+
+        public CondPagto(CondPagtoDto condPagto)
+        {
+            Descricao = condPagto.Descricao;
+            Credito = condPagto.Credito;
+            QuantParc = condPagto.QuantParc;
+        }
     }
 }
