@@ -11,15 +11,22 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens
         public decimal Quantidade { get; set; }
         public decimal ValorUnitario { get; set; }
         public decimal ValorTotalItem { get; set; }
-
         public int? CodigoDesconto { get; set; }
-        public DescontoItem DescontoItem { get; set; }
 
+        public DescontoItem DescontoItem { get; set; }
         public Compra Compra { get; set; }
+
 
         public void CalculaValorTotalItem()
         {
             ValorTotalItem = ValorUnitario * Quantidade;
+        }
+
+        public void CalculaSeqItem()
+        {
+            var listaSeqs = Compra.Itens.Select(x => x.SequencialItem).ToList();
+
+            ValorTotalItem = (listaSeqs == null || listaSeqs.Count == 0) ? 1 : listaSeqs.Max() + 1;
         }
     }
 }

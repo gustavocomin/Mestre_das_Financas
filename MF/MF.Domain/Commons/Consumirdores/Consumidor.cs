@@ -1,5 +1,6 @@
 ﻿using MF.Domain.Commons.ClassesBase;
 using MF.Domain.ControleMensal.Despesas;
+using MF.Domain.ControleMensal.Rendas;
 
 namespace MF.Domain.Commons.Consumirdores
 {

@@ -3,6 +3,7 @@ using MF.Domain.Commons.Consumirdores;
 using MF.Domain.Commons.Empresas;
 using MF.Domain.Commons.ModalidadePagto.CondPagtos;
 using MF.Domain.Commons.ModalidadePagto.FormaPagtos;
+using System.ComponentModel;
 
 namespace MF.Domain.ControleMensal.Despesas
 {
@@ -29,13 +30,21 @@ namespace MF.Domain.ControleMensal.Despesas
 
     public enum TipoDespesa
     {
+        [Description("Moradia")]
         Moradia = 0,
+        [Description("Transporte")]
         Transporte = 1,
+        [Description("Entretenimento")]
         Entretenimento = 2,
+        [Description("Investimentos")]
         Investimentos = 3,
+        [Description("Animais")]
         Animais = 4,
+        [Description("Pessoais")]
         Pessoais = 5,
+        [Description("Mercado")]
         Mercado = 6,
+        [Description("Outros")]
         Outros = 7,
     }
 }

@@ -8,7 +8,7 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos.Parcs
         public decimal ValorParc { get; private set; }
         public int SeqParc { get; private set; }
 
-        public List<CondPagtoParcs> GerarParcelas(decimal valorTotal, decimal quantParc)
+        public List<CondPagtoParcs> GerarParcelas(int codigoCondPagto, decimal valorTotal, decimal quantParc)
         {
             List<CondPagtoParcs> Parcs = new();
 
@@ -19,7 +19,7 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos.Parcs
             {
                 Parcs.Add(new CondPagtoParcs
                 {
-                    CodigoCondPagto = Id,
+                    CodigoCondPagto = codigoCondPagto,
                     SeqParc = count,
                     ValorParc = valorParc
                 });

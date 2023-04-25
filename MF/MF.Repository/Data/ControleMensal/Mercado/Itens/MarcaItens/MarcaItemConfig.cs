@@ -1,13 +1,14 @@
 ﻿using MF.Domain.ControleMensal.Mercado.Itens.MarcaItens;
+using MF.Domain.ControleMensal.Mercado.Itens.MarcaItens.Models;
 using MF.Repository.Configurations.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Itens.MarcaItens
 {
-    public class MarcaItemConfig : EntityTypeConfigurationIdBaseDtAlt<MarcaItem>
+    public class MarcaItemConfig : EntityTypeConfigurationIdBaseDtAlt<MarcaItemView>
     {
-        public void Configure(EntityTypeBuilder<MarcaItem> builder)
+        public void Configure(EntityTypeBuilder<MarcaItemView> builder)
         {
             builder.ToTable("MARCAITEM");
 
