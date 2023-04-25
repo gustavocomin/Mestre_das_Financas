@@ -8,7 +8,7 @@ using MF.Domain.ControleMensal.Mercado.Compras;
 using MF.Domain.ControleMensal.Mercado.Compras.Itens;
 using MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto;
 using MF.Domain.ControleMensal.Mercado.Itens;
-using MF.Domain.ControleMensal.Mercado.Itens.MarcaItens.Models;
+using MF.Domain.ControleMensal.Mercado.Itens.MarcaItens;
 using MF.Domain.ControleMensal.Rendas;
 using MF.Domain.Planejamento;
 using MF.Domain.Planejamento.Itens;
@@ -39,7 +39,7 @@ namespace MF.Repository.Configurations.Db
         public DbSet<DescontoItem> DescontoItem { get; set; }
         public DbSet<ItemCompra> ItemCompra { get; set; }
         public DbSet<Compra> Compra { get; set; }
-        public DbSet<MarcaItemView> MarcaItem { get; set; }
+        public DbSet<MarcaItem> MarcaItem { get; set; }
         public DbSet<Item> Item { get; set; }
 
         public DbSet<Meta> Meta { get; set; }
@@ -79,7 +79,7 @@ namespace MF.Repository.Configurations.Db
             modelBuilder.Entity<DescontoItem>();
             modelBuilder.Entity<ItemCompra>();
             modelBuilder.Entity<Compra>();
-            modelBuilder.Entity<MarcaItemView>();
+            modelBuilder.Entity<MarcaItem>();
             modelBuilder.Entity<Item>();
             modelBuilder.Entity<Meta>();
             modelBuilder.Entity<MetaItem>();
