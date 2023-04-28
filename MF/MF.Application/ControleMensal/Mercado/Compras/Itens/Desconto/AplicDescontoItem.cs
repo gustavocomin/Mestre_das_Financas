@@ -3,7 +3,7 @@ using MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto.Models;
 
 namespace MF.Application.ControleMensal.Mercado.Compras.Itens.Desconto
 {
-    public class AplicDescontoItem
+    public class AplicDescontoItem : IAplicDescontoItem
     {
         private readonly IRepDescontoItem _repDescontoItem;
 
@@ -23,7 +23,7 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens.Desconto
             }
             catch (Exception e)
             {
-                throw new Exception($"Erro ao inserir descontoItem. Erro: {e.Message}");
+                throw new Exception($"Erro ao inserir desconto ao item. Erro: {e.Message}");
             }
         }
 
@@ -31,7 +31,7 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens.Desconto
         {
             try
             {
-                DescontoItem descontoItem = _repDescontoItem.FindById<DescontoItem>(id) ?? throw new Exception($"Não foi possivél encontrar a descontoItem de ID = {id}.");
+                DescontoItem descontoItem = _repDescontoItem.FindById<DescontoItem>(id) ?? throw new Exception($"Não foi possivél encontrar a desconto do item de ID = {id}");
                 DescontoItem newDescontoItem = new(dto);
                 _repDescontoItem.SaveChanges(newDescontoItem);
                 DescontoItemView view = new(newDescontoItem);
@@ -39,7 +39,7 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens.Desconto
             }
             catch (Exception e)
             {
-                throw new Exception($"Erro ao alterar descontoItem. Erro: {e.Message}");
+                throw new Exception($"Erro ao alterar desconto do item. Erro: {e.Message}");
             }
         }
 
@@ -51,7 +51,7 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens.Desconto
             }
             catch (Exception e)
             {
-                throw new Exception($"Erro ao deletar descontoItem. Erro: {e.Message}");
+                throw new Exception($"Erro ao deletar desconto do item. Erro: {e.Message}");
             }
         }
 
@@ -63,7 +63,7 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens.Desconto
             }
             catch (Exception e)
             {
-                throw new Exception($"Erro ao deletar descontoItem. Erro: {e.Message}");
+                throw new Exception($"Erro ao deletar desconto do item. Erro: {e.Message}");
             }
         }
 
@@ -71,13 +71,13 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens.Desconto
         {
             try
             {
-                DescontoItem descontoItem = _repDescontoItem.FindById<DescontoItem>(id) ?? throw new Exception($"Não foi possivél encontrar o descontoItem de ID = {id}.");
+                DescontoItem descontoItem = _repDescontoItem.FindById<DescontoItem>(id) ?? throw new Exception($"Não foi possivél encontrar o desconto do item de ID = {id}.");
                 DescontoItemView view = new(descontoItem);
                 return view;
             }
             catch (Exception e)
             {
-                throw new Exception($"Erro ao buscar descontoItem. Erro: {e.Message}");
+                throw new Exception($"Erro ao buscar desconto do item. Erro: {e.Message}");
             }
         }
 
@@ -91,7 +91,7 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens.Desconto
             }
             catch (Exception e)
             {
-                throw new Exception($"Erro ao buscar descontoItemes. Erro: {e.Message}");
+                throw new Exception($"Erro ao buscar descontoItems. Erro: {e.Message}");
             }
         }
     }

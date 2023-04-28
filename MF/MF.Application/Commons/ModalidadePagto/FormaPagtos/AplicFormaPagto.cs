@@ -32,9 +32,9 @@ namespace MF.Application.Commons.ModalidadePagto.FormaPagtos
             try
             {
                 FormaPagto formaPagto = _repFormaPagto.FindById<FormaPagto>(id) ?? throw new Exception($"Não foi possivél encontrar a forma de pagamento de ID = {id}.");
-                FormaPagto newFormaPagto = new(dto);
-                _repFormaPagto.SaveChanges(newFormaPagto);
-                FormaPagtoView view = new(newFormaPagto);
+                formaPagto = new FormaPagto().AtualizaFormaPagto(formaPagto, dto);
+                _repFormaPagto.SaveChanges(formaPagto);
+                FormaPagtoView view = new(formaPagto);
                 return view;
             }
             catch (Exception e)

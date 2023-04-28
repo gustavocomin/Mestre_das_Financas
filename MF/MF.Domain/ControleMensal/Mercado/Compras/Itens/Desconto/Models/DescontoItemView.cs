@@ -21,5 +21,15 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens.Desconto.Models
             ValorDesconto = descontoItem.ValorDesconto;
             ItemCompra = new ItemCompraView(descontoItem.ItemCompra);
         }
+
+        public List<DescontoItemView> ListDescontoItemView(List<DescontoItem> descontoItens)
+        {
+            List<DescontoItemView> list = new();
+            descontoItens.ForEach(x =>
+            {
+                list.Add(new DescontoItemView(x));
+            });
+            return list;
+        }
     }
 }

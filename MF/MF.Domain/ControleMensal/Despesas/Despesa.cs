@@ -46,25 +46,42 @@ namespace MF.Domain.ControleMensal.Despesas
             CodigoFormaPagto = despesa.CodigoFormaPagto;
             CodigoCondPagto = despesa.CodigoCondPagto;
         }
-    }
 
-    public enum TipoDespesa
-    {
-        [Description("Moradia")]
-        Moradia = 0,
-        [Description("Transporte")]
-        Transporte = 1,
-        [Description("Entretenimento")]
-        Entretenimento = 2,
-        [Description("Investimentos")]
-        Investimentos = 3,
-        [Description("Animais")]
-        Animais = 4,
-        [Description("Pessoais")]
-        Pessoais = 5,
-        [Description("Mercado")]
-        Mercado = 6,
-        [Description("Outros")]
-        Outros = 7,
+        public Despesa AtualizaDespesa(Despesa despesa, DespesaDto despesaDto)
+        {
+            despesa.Descricao = despesaDto.Descricao;
+            despesa.Valor = despesaDto.Valor;
+            despesa.TipoDespesa = despesaDto.TipoDespesa;
+            despesa.DataDespesa = despesaDto.DataDespesa;
+            despesa.Mensal = despesaDto.Mensal;
+            despesa.DataInicial = despesaDto.DataInicial;
+            despesa.DataFinal = despesaDto.DataFinal;
+            despesa.CodigoEmpresa = despesaDto.CodigoEmpresa;
+            despesa.CodigoConsumidor = despesaDto.CodigoConsumidor;
+            despesa.CodigoFormaPagto = despesaDto.CodigoFormaPagto;
+            despesa.CodigoCondPagto = despesaDto.CodigoCondPagto;
+
+            return despesa;
+        }
     }
+}
+
+public enum TipoDespesa
+{
+    [Description("Moradia")]
+    Moradia = 0,
+    [Description("Transporte")]
+    Transporte = 1,
+    [Description("Entretenimento")]
+    Entretenimento = 2,
+    [Description("Investimentos")]
+    Investimentos = 3,
+    [Description("Animais")]
+    Animais = 4,
+    [Description("Pessoais")]
+    Pessoais = 5,
+    [Description("Mercado")]
+    Mercado = 6,
+    [Description("Outros")]
+    Outros = 7,
 }

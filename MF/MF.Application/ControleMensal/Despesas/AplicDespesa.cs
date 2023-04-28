@@ -32,9 +32,9 @@ namespace MF.Application.ControleMensal.Despesas
             try
             {
                 Despesa despesa = _repDespesa.FindById<Despesa>(id) ?? throw new Exception($"Não foi possivél encontrar a despesa de ID = {id}.");
-                Despesa newDespesa = new(dto);
-                _repDespesa.SaveChanges(newDespesa);
-                DespesaView view = new(newDespesa);
+                despesa = new Despesa().AtualizaDespesa(despesa, dto);
+                _repDespesa.SaveChanges(despesa);
+                DespesaView view = new(despesa);
                 return view;
             }
             catch (Exception e)

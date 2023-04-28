@@ -1,4 +1,5 @@
 ﻿using MF.Domain.Commons.ClassesBase;
+using MF.Domain.Planejamento.Itens.Models;
 
 namespace MF.Domain.Planejamento.Itens
 {
@@ -23,7 +24,7 @@ namespace MF.Domain.Planejamento.Itens
         public Meta Meta { get; set; }
 
 
-        public void CalculaValorGuardarMes()
+        private void CalculaValorGuardarMes()
         {
             TimeSpan diff = DataExpectativaAquisicao - DataAlteracao;
             int meses = (int)(diff.TotalDays / 30.44);
@@ -31,9 +32,41 @@ namespace MF.Domain.Planejamento.Itens
             ValorGuardarMes = Math.Round(DiferencaCompraReserva / meses, 2, MidpointRounding.ToEven);
         }
 
-        public void CalculaDiferenca()
+        private void CalculaDiferenca()
         {
             DiferencaCompraReserva = ValorCompra - ValorReservaCompra;
+        }
+
+        public void AtualizaCalculos()
+        {
+            CalculaValorGuardarMes();
+            CalculaDiferenca();
+        }
+
+        public MetaItem(MetaItemDto metaItem)
+        {
+            Descricao = metaItem.Descricao;
+            ValorCompra = metaItem.ValorCompra;
+            LinkCompra = metaItem.LinkCompra;
+            ValorReservaCompra = metaItem.ValorReservaCompra;
+            DataExpectativaAquisicao = metaItem.DataExpectativaAquisicao;
+            Status = metaItem.Status;
+            CodigoMeta = metaItem.CodigoMeta;
+            AtualizaCalculos();
+        }
+
+        public MetaItem AtualizaMetaItem(MetaItem metaItem, MetaItemDto metaItemDto)
+        {
+            metaItem.Descricao = metaItemDto.Descricao;
+            metaItem.ValorCompra = metaItemDto.ValorCompra;
+            metaItem.LinkCompra = metaItemDto.LinkCompra;
+            metaItem.ValorReservaCompra = metaItemDto.ValorReservaCompra;
+            metaItem.DataExpectativaAquisicao = metaItemDto.DataExpectativaAquisicao;
+            metaItem.Status = metaItemDto.Status;
+            metaItem.CodigoMeta = metaItemDto.CodigoMeta;
+            AtualizaCalculos();
+
+            return metaItem;
         }
     }
 

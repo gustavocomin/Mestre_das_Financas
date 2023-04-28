@@ -32,9 +32,9 @@ namespace MF.Application.Commons.Empresas
             try
             {
                 Empresa empresa = _repEmpresa.FindById<Empresa>(id) ?? throw new Exception($"Não foi possivél encontrar a empresa de ID = {id}.");
-                Empresa newEmpresa = new(dto);
-                _repEmpresa.SaveChanges(newEmpresa);
-                EmpresaView view = new(newEmpresa);
+                empresa = new Empresa().AtualizaEmpresa(empresa, dto);
+                _repEmpresa.SaveChanges(empresa);
+                EmpresaView view = new(empresa);
                 return view;
             }
             catch (Exception e)

@@ -33,9 +33,9 @@ namespace MF.Application.Commons.Consumirdores
             try
             {
                 Consumidor consumidor = _repConsumidor.FindById<Consumidor>(id) ?? throw new Exception($"Não foi possivél encontrar o consumidor de ID = {id}.");
-                Consumidor newConsumidor = new(dto);
-                _repConsumidor.SaveChanges(newConsumidor);
-                ConsumidorView view = new(newConsumidor);
+                consumidor = new Consumidor().AtualizaConsumidor(consumidor, dto);
+                _repConsumidor.SaveChanges(consumidor);
+                ConsumidorView view = new(consumidor);
                 return view;
             }
             catch (Exception e)

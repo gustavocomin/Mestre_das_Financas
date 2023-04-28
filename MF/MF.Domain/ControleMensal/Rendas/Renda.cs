@@ -29,5 +29,16 @@ namespace MF.Domain.ControleMensal.Rendas
             CodigoEmpresa = renda.CodigoEmpresa;
             CodigoConsumidor = renda.CodigoConsumidor;
         }
+
+        public Renda AtualizaRenda(Renda renda, RendaDto rendaDto)
+        {
+            renda.Descricao = rendaDto.Descricao;
+            renda.Valor = rendaDto.Valor;
+            renda.Salario = rendaDto.Salario;
+            renda.CodigoEmpresa = rendaDto.CodigoEmpresa;
+            renda.CodigoConsumidor = rendaDto.CodigoConsumidor;
+
+            return renda;
+        }
     }
 }

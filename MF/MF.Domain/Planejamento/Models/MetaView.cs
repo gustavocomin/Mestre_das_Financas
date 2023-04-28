@@ -20,6 +20,10 @@ namespace MF.Domain.Planejamento.Models
 
         public List<MetaItemView>? Itens { get; set; }
 
+        public MetaView()
+        {
+        }
+
         public MetaView(Meta meta)
         {
             Id = meta.Id;
@@ -32,6 +36,16 @@ namespace MF.Domain.Planejamento.Models
             CodigoConsumidor = meta.CodigoConsumidor;
             Consumidor = new ConsumidorView(meta.Consumidor);
             Itens = (meta.Itens != null && meta.Itens.Count > 0) ? new MetaItemView().ListMetaItemView(meta.Itens) : null;
+        }
+
+        public List<MetaView> ListMetaView(List<Meta> metas)
+        {
+            List<MetaView> list = new();
+            metas.ForEach(x =>
+            {
+                list.Add(new MetaView(x));
+            });
+            return list;
         }
     }
 }

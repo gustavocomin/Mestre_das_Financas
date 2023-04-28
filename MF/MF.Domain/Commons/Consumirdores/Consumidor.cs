@@ -32,5 +32,15 @@ namespace MF.Domain.Commons.Consumirdores
             DataNascimento = consumidor.DataNascimento;
             Celular = consumidor.Celular;
         }
+
+        public Consumidor AtualizaConsumidor(Consumidor consumidor, ConsumidorDto consumidorDto)
+        {
+            consumidor.Nome = consumidorDto.Nome;
+            consumidor.Email = consumidorDto.Email;
+            consumidor.DataNascimento = consumidorDto.DataNascimento;
+            consumidor.Celular = consumidorDto.Celular;
+
+            return consumidor;
+        }
     }
 }

@@ -32,9 +32,9 @@ namespace MF.Application.Commons.ModalidadePagto.CondPagtos
             try
             {
                 CondPagto condPagto = _repCondPagto.FindById<CondPagto>(id) ?? throw new Exception($"Não foi possivél encontrar a condição de pagamento de ID = {id}.");
-                CondPagto newEmpresa = new(dto);
-                _repCondPagto.SaveChanges(newEmpresa);
-                CondPagtoView view = new(newEmpresa);
+                condPagto = new CondPagto().AtualizaCondPagto(condPagto, dto);
+                _repCondPagto.SaveChanges(condPagto);
+                CondPagtoView view = new(condPagto);
                 return view;
             }
             catch (Exception e)

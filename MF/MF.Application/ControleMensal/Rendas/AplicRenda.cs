@@ -32,9 +32,9 @@ namespace MF.Application.ControleMensal.Rendas
             try
             {
                 Renda renda = _repRenda.FindById<Renda>(id) ?? throw new Exception($"Não foi possivél encontrar a renda de ID = {id}.");
-                Renda newRenda = new(dto);
-                _repRenda.SaveChanges(newRenda);
-                RendaView view = new(newRenda);
+                renda = new Renda().AtualizaRenda(renda, dto);
+                _repRenda.SaveChanges(renda);
+                RendaView view = new(renda);
                 return view;
             }
             catch (Exception e)

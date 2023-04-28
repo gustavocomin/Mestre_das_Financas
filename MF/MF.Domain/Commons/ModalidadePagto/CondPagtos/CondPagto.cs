@@ -22,5 +22,14 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos
             Credito = condPagto.Credito;
             QuantParc = condPagto.QuantParc;
         }
+
+        public CondPagto AtualizaCondPagto(CondPagto condPagto, CondPagtoDto condPagtoDto)
+        {
+            condPagto.Descricao = condPagtoDto.Descricao;
+            condPagto.Credito = condPagtoDto.Credito;
+            condPagto.QuantParc = condPagtoDto.QuantParc;
+
+            return condPagto;
+        }
     }
 }

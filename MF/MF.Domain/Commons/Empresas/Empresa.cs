@@ -25,5 +25,17 @@ namespace MF.Domain.Commons.Empresas
             Cidade = empresa.Cidade;
             Complemento = empresa.Complemento;
         }
+
+        public Empresa AtualizaEmpresa(Empresa empresa, EmpresaDto empresaDto)
+        {
+            empresa.NomeEmpresa = empresaDto.NomeEmpresa;
+            empresa.CnpjEmpresa = empresaDto.CnpjEmpresa;
+            empresa.Endereço = empresaDto.Endereço;
+            empresa.Bairro = empresaDto.Bairro;
+            empresa.Cidade = empresaDto.Cidade;
+            empresa.Complemento = empresaDto.Complemento;
+
+            return empresa;
+        }
     }
 }

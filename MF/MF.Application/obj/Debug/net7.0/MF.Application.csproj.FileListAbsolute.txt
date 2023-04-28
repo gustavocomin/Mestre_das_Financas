@@ -10,3 +10,6 @@ E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_d
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Application\obj\Debug\net7.0\refint\MF.Application.dll
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Application\obj\Debug\net7.0\MF.Application.pdb
 E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Application\obj\Debug\net7.0\ref\MF.Application.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Application\bin\Debug\net7.0\MF.Domain.dll
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Application\bin\Debug\net7.0\MF.Domain.pdb
+E:\PROGRAMACAO\C#\Mestre das finanças - projeto de controle financeiro\Mestre_das_Financas\MF\MF.Application\obj\Debug\net7.0\MF.Application.csproj.CopyComplete

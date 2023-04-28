@@ -15,5 +15,12 @@ namespace MF.Domain.Commons.ModalidadePagto.FormaPagtos
         {
             Descricao = formaPagto.Descricao;
         }
+
+        public FormaPagto AtualizaFormaPagto(FormaPagto formaPagto, FormaPagtoDto formaPagtoDto)
+        {
+            formaPagto.Descricao = formaPagtoDto.Descricao;
+
+            return formaPagto;
+        }
     }
 }
