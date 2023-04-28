@@ -8,7 +8,7 @@ namespace MF.Repository.Data.Commons.Consumirdores
     {
         public void Configure(EntityTypeBuilder<Consumidor> builder)
         {
-            builder.ToTable("CONSUMIDOR");
+            builder.ToTable("Consumidor");
 
             string idColumnName = $"Id{builder.Metadata.ClrType.Name}";
 

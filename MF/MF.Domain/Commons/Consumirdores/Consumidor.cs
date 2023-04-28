@@ -14,7 +14,7 @@ namespace MF.Domain.Commons.Consumirdores
         public string? Celular { get; set; }
 
         public List<Renda> Rendas { get; set; }
-        public List<Despesa>? Despesas { get; set; }
+        public List<Despesa> Despesas { get; set; }
 
         public void AtualizaRenda()
         {
@@ -31,6 +31,7 @@ namespace MF.Domain.Commons.Consumirdores
             Email = consumidor.Email;
             DataNascimento = consumidor.DataNascimento;
             Celular = consumidor.Celular;
+            AtualizaRenda();
         }
 
         public Consumidor AtualizaConsumidor(Consumidor consumidor, ConsumidorDto consumidorDto)
@@ -39,6 +40,7 @@ namespace MF.Domain.Commons.Consumirdores
             consumidor.Email = consumidorDto.Email;
             consumidor.DataNascimento = consumidorDto.DataNascimento;
             consumidor.Celular = consumidorDto.Celular;
+            AtualizaRenda();
 
             return consumidor;
         }

@@ -32,6 +32,9 @@ namespace MF.Domain.ControleMensal.Despesas.Models
 
         public DespesaView(Despesa despesa)
         {
+            if (despesa == null)
+                return;
+
             Id = despesa.Id;
             Descricao = despesa.Descricao;
             Valor = despesa.Valor;
@@ -53,6 +56,10 @@ namespace MF.Domain.ControleMensal.Despesas.Models
         public List<DespesaView> ListDespesaView(List<Despesa> despesas)
         {
             List<DespesaView> list = new();
+
+            if (!despesas.Any())
+                return list;
+
             despesas.ForEach(x =>
             {
                 list.Add(new DespesaView(x));

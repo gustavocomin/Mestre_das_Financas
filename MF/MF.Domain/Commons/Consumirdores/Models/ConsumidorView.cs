@@ -12,8 +12,8 @@ namespace MF.Domain.Commons.Consumirdores.Models
         public decimal RendaTotal { get; set; } = 0;
         public string? Celular { get; set; }
 
-        public List<RendaView> Rendas { get; set; }
-        public List<DespesaView> Despesas { get; set; }
+        public List<RendaView>? Rendas { get; set; }
+        public List<DespesaView>? Despesas { get; set; }
 
         public ConsumidorView()
         {
@@ -27,8 +27,8 @@ namespace MF.Domain.Commons.Consumirdores.Models
             DataNascimento = consumidor.DataNascimento;
             RendaTotal = consumidor.RendaTotal;
             Celular = consumidor.Celular;
-            Rendas = new RendaView().ListRendaView(consumidor.Rendas);
-            Despesas = new DespesaView().ListDespesaView(consumidor.Despesas);
+            Rendas = (consumidor.Rendas != null && consumidor.Rendas.Any()) ? new RendaView().ListRendaView(consumidor.Rendas) : null;
+            Despesas = (consumidor.Despesas != null && consumidor.Despesas.Any()) ? new DespesaView().ListDespesaView(consumidor.Despesas) : null;
         }
 
         public List<ConsumidorView> ListConsumidorView(List<Consumidor> consumidores)

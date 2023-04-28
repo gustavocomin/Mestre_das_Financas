@@ -22,6 +22,9 @@ namespace MF.Domain.ControleMensal.Rendas.Models
 
         public RendaView(Renda renda)
         {
+            if (renda == null)
+                return;
+
             Id = renda.Id;
             Descricao = renda.Descricao;
             Valor = renda.Valor;
@@ -35,6 +38,9 @@ namespace MF.Domain.ControleMensal.Rendas.Models
         public List<RendaView> ListRendaView(List<Renda> rendas)
         {
             List<RendaView> list = new();
+            if (!rendas.Any())
+                return list;
+
             rendas.ForEach(x =>
             {
                 rendas.Add(x);

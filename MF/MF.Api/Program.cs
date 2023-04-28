@@ -1,9 +1,12 @@
-using MF.Domain.Configuration;
-using MF.infrastructure.Configuration;
+using MF.Application.Commons.Consumirdores;
+using MF.Application.Commons.Usuarios;
+using MF.Domain.Commons.Consumirdores;
+using MF.Domain.Commons.Usuarios;
+using MF.Domain.Commons.Usuarios.Validacoes;
 using MF.Repository.Configurations.Db;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using MF.Repository.Data.Commons.Consumirdores;
+using MF.Repository.Data.Commons.Usuarios;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
@@ -37,29 +40,29 @@ namespace MF.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mestre das Finanças" });
 
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme (Example: 'Bearer 12345abcdef')",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
-                });
+                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                //{
+                //    Description = "JWT Authorization header using the Bearer scheme (Example: 'Bearer 12345abcdef')",
+                //    Name = "Authorization",
+                //    In = ParameterLocation.Header,
+                //    Type = SecuritySchemeType.ApiKey,
+                //    Scheme = "Bearer"
+                //});
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        Array.Empty<string>()
-                    }
-                });
+                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                //{
+                //    {
+                //        new OpenApiSecurityScheme
+                //        {
+                //            Reference = new OpenApiReference
+                //            {
+                //                Type = ReferenceType.SecurityScheme,
+                //                Id = "Bearer"
+                //            }
+                //        },
+                //        Array.Empty<string>()
+                //    }
+                //});
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -68,25 +71,31 @@ namespace MF.Api
 
             var secret = Encoding.ASCII.GetBytes(new Program(builder.Configuration).Configuration.GetSection("JwtConfigurations:Secret").Value);
 
-            builder.Services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(secret),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+            //builder.Services.AddAuthentication(x =>
+            //{
+            //    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+            //.AddJwtBearer(x =>
+            //{
+            //    x.RequireHttpsMetadata = false;
+            //    x.SaveToken = true;
+            //    x.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(secret),
+            //        ValidateIssuer = false,
+            //        ValidateAudience = false
+            //    };
+            //});
 
-            builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+            //builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddScoped<IRepConsumidor, RepConsumidor>();
+            builder.Services.AddScoped<IAplicConsumidor, AplicConsumidor>();
+
+            builder.Services.AddScoped<IRepUsuario, RepUsuario>();
+            builder.Services.AddScoped<IAplicUsuario, AplicUsuario>();
+            builder.Services.AddScoped<IValidacoesUsuario, ValidacoesUsuario>();
 
             var app = builder.Build();
 

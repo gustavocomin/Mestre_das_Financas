@@ -3742,6 +3742,19 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "MF.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "MF.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MF.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MF.Application.dll": {}
+        }
+      },
       "MF.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -10567,6 +10580,11 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "MF.Application/1.0.0": {
+      "type": "project",
+      "path": "../MF.Application/MF.Application.csproj",
+      "msbuildProject": "../MF.Application/MF.Application.csproj"
+    },
     "MF.Domain/1.0.0": {
       "type": "project",
       "path": "../MF.Domain/MF.Domain.csproj",
@@ -10585,6 +10603,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "MF.Application >= 1.0.0",
       "MF.Repository >= 1.0.0",
       "MF.infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication >= 2.2.0",
@@ -10631,6 +10650,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "E:\\PROGRAMACAO\\C#\\Mestre das finanças - projeto de controle financeiro\\Mestre_das_Financas\\MF\\MF.Application\\MF.Application.csproj": {
+              "projectPath": "E:\\PROGRAMACAO\\C#\\Mestre das finanças - projeto de controle financeiro\\Mestre_das_Financas\\MF\\MF.Application\\MF.Application.csproj"
+            },
             "E:\\PROGRAMACAO\\C#\\Mestre das finanças - projeto de controle financeiro\\Mestre_das_Financas\\MF\\MF.infrastructure\\MF.infrastructure.csproj": {
               "projectPath": "E:\\PROGRAMACAO\\C#\\Mestre das finanças - projeto de controle financeiro\\Mestre_das_Financas\\MF\\MF.infrastructure\\MF.infrastructure.csproj"
             },

@@ -37,10 +37,11 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens
         public ItemCompra(ItemCompraDto itemCompra)
         {
             CodigoCompra = itemCompra.CodigoCompra;
-            SequencialItem = itemCompra.SequencialItem;
             Descricao = itemCompra.Descricao;
             Quantidade = itemCompra.Quantidade;
             ValorUnitario = itemCompra.ValorUnitario;
+            CalculaSeqItem();
+            CalculaValorTotalItem();
         }
 
         public ItemCompra AtualizaItemCompra(ItemCompra itemCompra, ItemCompraDto itemCompraDto)
@@ -50,6 +51,7 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens
             itemCompra.Descricao = itemCompraDto.Descricao;
             itemCompra.Quantidade = itemCompraDto.Quantidade;
             itemCompra.ValorUnitario = itemCompraDto.ValorUnitario;
+            CalculaValorTotalItem();
 
             return itemCompra;
         }

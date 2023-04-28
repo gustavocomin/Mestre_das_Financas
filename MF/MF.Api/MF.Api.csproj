@@ -24,6 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\MF.Application\MF.Application.csproj" />
 		<ProjectReference Include="..\MF.infrastructure\MF.infrastructure.csproj" />
 		<ProjectReference Include="..\MF.Repository\MF.Repository.csproj" />
 	</ItemGroup>
@@ -32,7 +33,6 @@
 	  <Folder Include="Controllers\Commons\Empresas\" />
 	  <Folder Include="Controllers\Commons\ModalidadePagto\CondPagtos\Parcs\" />
 	  <Folder Include="Controllers\Commons\ModalidadePagto\FormaPagtos\" />
-	  <Folder Include="Controllers\Commons\Usuarios\" />
 	  <Folder Include="Controllers\ControleMensal\Despesas\" />
 	  <Folder Include="Controllers\ControleMensal\Mercado\Compras\Itens\Desconto\" />
 	  <Folder Include="Controllers\ControleMensal\Mercado\Itens\MarcaItens\Hist\" />

@@ -17,14 +17,13 @@ namespace MF.Application.Commons.Consumirdores
             try
             {
                 Consumidor consumidor = new(dto);
-                consumidor.AtualizaRenda();
                 _repConsumidor.SaveChanges(consumidor);
                 ConsumidorView view = new(consumidor);
                 return view;
             }
             catch (Exception e)
             {
-                throw new Exception($"Erro ao inserir consumidor. Erro: {e.Message}");
+                throw new Exception($"Erro ao inserir consumidor. Erro: {e.Message} - {e.InnerException}");
             }
         }
 
@@ -56,6 +55,18 @@ namespace MF.Application.Commons.Consumirdores
             }
         }
 
+        public void Delete(List<int> ids)
+        {
+            try
+            {
+                _repConsumidor.DeleteByIds<Consumidor>(ids);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao deletar consumidores. Erro: {e.Message}");
+            }
+        }
+
         public ConsumidorView FindById(int id)
         {
             try
@@ -74,13 +85,30 @@ namespace MF.Application.Commons.Consumirdores
         {
             try
             {
+                List<ConsumidorView> view = new();
                 List<Consumidor> consumidores = _repConsumidor.FindAll<Consumidor>();
-                List<ConsumidorView> view = new ConsumidorView().ListConsumidorView(consumidores);
+                if (consumidores != null && consumidores.Count > 0)
+                    view = new ConsumidorView().ListConsumidorView(consumidores);
+
                 return view;
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao buscar consumidores. Erro: {e.Message}");
+            }
+        }
+
+        public ConsumidorView FindByEmail(string email)
+        {
+            try
+            {
+                ConsumidorView consumidor = FindAll().Where(x => x.Email.Trim().ToUpper() == email.Trim().ToUpper()).FirstOrDefault();
+
+                return consumidor;
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao buscar consumidor por Email. Email = {email}. Erro: {e.Message} - {e.InnerException}");
             }
         }
     }

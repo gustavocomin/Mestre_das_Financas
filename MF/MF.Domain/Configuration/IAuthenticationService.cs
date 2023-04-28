@@ -1,9 +1,9 @@
-﻿using MF.Domain.Commons.Usuarios.ViewModel;
+﻿using MF.Domain.Commons.Usuarios;
 
 namespace MF.Domain.Configuration
 {
     public interface IAuthenticationService
     {
-        string GenerateToken(UserViewModel userViewModel);
+        string GenerateToken(Usuario usuario);
     }
 }
