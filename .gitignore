@@ -66,3 +66,4 @@ StyleCopReport.xml
 
 # Chutzpah Test files
 _Chutzpah*
+/MF/.vs
