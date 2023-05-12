@@ -1,29 +1,27 @@
-﻿using MF.Application.Commons.Consumirdores;
-using MF.Domain.Commons.Consumirdores.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using MF.Application.Commons.Empresas;
+using MF.Domain.Commons.Empresas.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MF.Api.Controllers.Commons.Consumirdores
+namespace MF.Api.Controllers.Commons.Empresas
 {
     [ApiController]
-    [Route("api/v1/Consumidor")]
-    [AllowAnonymous]
-    public class ConsumidorController : ControllerBase
+    [Route("/v1/Empresa")]
+    public class EmpresaController : ControllerBase
     {
-        private readonly IAplicConsumidor _aplicConsumidor;
+        private readonly IAplicEmpresa _aplicEmpresa;
 
-        public ConsumidorController(IAplicConsumidor aplicConsumidor)
+        public EmpresaController(IAplicEmpresa aplicEmpresa)
         {
-            _aplicConsumidor = aplicConsumidor;
+            _aplicEmpresa = aplicEmpresa;
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> Post([FromBody] ConsumidorDto dto)
+        public async Task<IActionResult> Post([FromBody] EmpresaDto dto)
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.Insert(dto);
+                EmpresaView view = _aplicEmpresa.Insert(dto);
                 return Created("", view);
             }
             catch (Exception e)
@@ -38,7 +36,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                List<ConsumidorView> views = _aplicConsumidor.FindAll();
+                List<EmpresaView> views = _aplicEmpresa.FindAll();
                 return Ok(views);
             }
             catch (Exception e)
@@ -53,7 +51,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.FindById(id);
+                EmpresaView view = _aplicEmpresa.FindById(id);
                 return Ok(view);
             }
             catch (Exception e)
@@ -64,11 +62,11 @@ namespace MF.Api.Controllers.Commons.Consumirdores
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] ConsumidorDto dto)
+        public async Task<IActionResult> Put(int id, [FromBody] EmpresaDto dto)
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.Update(id, dto);
+                EmpresaView view = _aplicEmpresa.Update(id, dto);
                 return Ok(view);
             }
             catch (Exception e)
@@ -83,7 +81,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                _aplicConsumidor.Delete(id);
+                _aplicEmpresa.Delete(id);
                 return Ok();
             }
             catch (Exception e)
@@ -98,7 +96,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                _aplicConsumidor.Delete(ids);
+                _aplicEmpresa.Delete(ids);
                 return Ok();
             }
             catch (Exception e)

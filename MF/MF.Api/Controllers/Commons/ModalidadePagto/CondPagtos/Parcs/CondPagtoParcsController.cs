@@ -1,30 +1,28 @@
-﻿using MF.Application.Commons.Consumirdores;
-using MF.Domain.Commons.Consumirdores.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using MF.Application.Commons.ModalidadePagto.CondPagtos.Parcs;
+using MF.Domain.Commons.ModalidadePagto.CondPagtos.Parcs.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MF.Api.Controllers.Commons.Consumirdores
+namespace MF.Api.Controllers.Commons.ModalidadePagto.CondPagtos.Parcs
 {
     [ApiController]
-    [Route("api/v1/Consumidor")]
-    [AllowAnonymous]
-    public class ConsumidorController : ControllerBase
+    [Route("api/v1/CondPagtoParcs")]
+    public class CondPagtoParcsController : ControllerBase
     {
-        private readonly IAplicConsumidor _aplicConsumidor;
+        private readonly IAplicCondPagtoParcs _aplicCondPagtoParcs;
 
-        public ConsumidorController(IAplicConsumidor aplicConsumidor)
+        public CondPagtoParcsController(IAplicCondPagtoParcs aplicCondPagtoParcs)
         {
-            _aplicConsumidor = aplicConsumidor;
+            _aplicCondPagtoParcs = aplicCondPagtoParcs;
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> Post([FromBody] ConsumidorDto dto)
+        public async Task<IActionResult> Post([FromBody] CondPagtoParcsDto dto)
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.Insert(dto);
-                return Created("", view);
+                List<CondPagtoParcsView> views = _aplicCondPagtoParcs.Insert(dto);
+                return Created("", views);
             }
             catch (Exception e)
             {
@@ -38,7 +36,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                List<ConsumidorView> views = _aplicConsumidor.FindAll();
+                List<CondPagtoParcsView> views = _aplicCondPagtoParcs.FindAll();
                 return Ok(views);
             }
             catch (Exception e)
@@ -53,8 +51,8 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.FindById(id);
-                return Ok(view);
+                List<CondPagtoParcsView> views = _aplicCondPagtoParcs.FindById(id);
+                return Ok(views);
             }
             catch (Exception e)
             {
@@ -64,12 +62,12 @@ namespace MF.Api.Controllers.Commons.Consumirdores
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] ConsumidorDto dto)
+        public async Task<IActionResult> Put(int id, [FromBody] CondPagtoParcsDto dto)
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.Update(id, dto);
-                return Ok(view);
+                List<CondPagtoParcsView> views = _aplicCondPagtoParcs.Update(id, dto);
+                return Ok(views);
             }
             catch (Exception e)
             {
@@ -83,7 +81,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                _aplicConsumidor.Delete(id);
+                _aplicCondPagtoParcs.Delete(id);
                 return Ok();
             }
             catch (Exception e)
@@ -98,7 +96,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                _aplicConsumidor.Delete(ids);
+                _aplicCondPagtoParcs.Delete(ids);
                 return Ok();
             }
             catch (Exception e)

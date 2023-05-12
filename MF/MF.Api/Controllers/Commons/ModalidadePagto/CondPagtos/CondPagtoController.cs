@@ -1,29 +1,27 @@
-﻿using MF.Application.Commons.Consumirdores;
-using MF.Domain.Commons.Consumirdores.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using MF.Application.Commons.ModalidadePagto.CondPagtos;
+using MF.Domain.Commons.ModalidadePagto.CondPagtos.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MF.Api.Controllers.Commons.Consumirdores
+namespace MF.Api.Controllers.Commons.ModalidadePagto.CondPagtos
 {
     [ApiController]
-    [Route("api/v1/Consumidor")]
-    [AllowAnonymous]
-    public class ConsumidorController : ControllerBase
+    [Route("api/v1/CondPagto")]
+    public class CondPagtoController : ControllerBase
     {
-        private readonly IAplicConsumidor _aplicConsumidor;
+        private readonly IAplicCondPagto _aplicCondPagto;
 
-        public ConsumidorController(IAplicConsumidor aplicConsumidor)
+        public CondPagtoController(IAplicCondPagto aplicCondPagto)
         {
-            _aplicConsumidor = aplicConsumidor;
+            _aplicCondPagto = aplicCondPagto;
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> Post([FromBody] ConsumidorDto dto)
+        public async Task<IActionResult> Post([FromBody] CondPagtoDto dto)
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.Insert(dto);
+                CondPagtoView view = _aplicCondPagto.Insert(dto);
                 return Created("", view);
             }
             catch (Exception e)
@@ -38,7 +36,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                List<ConsumidorView> views = _aplicConsumidor.FindAll();
+                List<CondPagtoView> views = _aplicCondPagto.FindAll();
                 return Ok(views);
             }
             catch (Exception e)
@@ -53,7 +51,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.FindById(id);
+                CondPagtoView view = _aplicCondPagto.FindById(id);
                 return Ok(view);
             }
             catch (Exception e)
@@ -64,11 +62,11 @@ namespace MF.Api.Controllers.Commons.Consumirdores
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] ConsumidorDto dto)
+        public async Task<IActionResult> Put(int id, [FromBody] CondPagtoDto dto)
         {
             try
             {
-                ConsumidorView view = _aplicConsumidor.Update(id, dto);
+                CondPagtoView view = _aplicCondPagto.Update(id, dto);
                 return Ok(view);
             }
             catch (Exception e)
@@ -83,7 +81,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                _aplicConsumidor.Delete(id);
+                _aplicCondPagto.Delete(id);
                 return Ok();
             }
             catch (Exception e)
@@ -98,7 +96,7 @@ namespace MF.Api.Controllers.Commons.Consumirdores
         {
             try
             {
-                _aplicConsumidor.Delete(ids);
+                _aplicCondPagto.Delete(ids);
                 return Ok();
             }
             catch (Exception e)

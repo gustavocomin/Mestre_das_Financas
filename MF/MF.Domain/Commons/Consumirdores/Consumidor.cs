@@ -36,10 +36,10 @@ namespace MF.Domain.Commons.Consumirdores
 
         public Consumidor AtualizaConsumidor(Consumidor consumidor, ConsumidorDto consumidorDto)
         {
-            consumidor.Nome = consumidorDto.Nome;
-            consumidor.Email = consumidorDto.Email;
-            consumidor.DataNascimento = consumidorDto.DataNascimento;
-            consumidor.Celular = consumidorDto.Celular;
+            consumidor.Nome = string.IsNullOrEmpty(consumidorDto.Nome) ? consumidor.Nome : consumidorDto.Nome;
+            consumidor.Email = string.IsNullOrEmpty(consumidorDto.Email) ? consumidor.Email : consumidorDto.Email;
+            consumidor.DataNascimento = consumidorDto.DataNascimento == null ? consumidor.DataNascimento : consumidorDto.DataNascimento;
+            consumidor.Celular = string.IsNullOrEmpty(consumidorDto.Celular) ? consumidor.Celular : consumidorDto.Celular;
             AtualizaRenda();
 
             return consumidor;

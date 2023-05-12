@@ -30,7 +30,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Controllers\Commons\Empresas\" />
 	  <Folder Include="Controllers\Commons\ModalidadePagto\CondPagtos\Parcs\" />
 	  <Folder Include="Controllers\Commons\ModalidadePagto\FormaPagtos\" />
 	  <Folder Include="Controllers\ControleMensal\Despesas\" />

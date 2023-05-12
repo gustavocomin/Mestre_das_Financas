@@ -55,6 +55,18 @@ namespace MF.Application.Commons.ModalidadePagto.CondPagtos
             }
         }
 
+        public void Delete(List<int> ids)
+        {
+            try
+            {
+                _repCondPagto.DeleteByIds<CondPagto>(ids);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao deletar condições de pagamento. Erro: {e.Message}");
+            }
+        }
+
         public CondPagtoView FindById(int id)
         {
             try

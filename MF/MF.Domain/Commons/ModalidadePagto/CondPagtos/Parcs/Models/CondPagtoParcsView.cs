@@ -4,6 +4,8 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos.Parcs.Models
 {
     public class CondPagtoParcsView : IdBase
     {
+        public int CodigoOrigem { get; set; }
+        public OrigemCongPagtoParc Origem { get; set; }
         public int CodigoCondPagto { get; set; }
         public decimal ValorParc { get; set; }
         public int SeqParc { get; set; }
@@ -18,6 +20,8 @@ namespace MF.Domain.Commons.ModalidadePagto.CondPagtos.Parcs.Models
             CodigoCondPagto = condPagtoParcs.CodigoCondPagto;
             ValorParc = condPagtoParcs.ValorParc;
             SeqParc = condPagtoParcs.SeqParc;
+            CodigoOrigem = condPagtoParcs.CodigoOrigem;
+            Origem = condPagtoParcs.Origem;
         }
 
         public List<CondPagtoParcsView> ListCondPagtoParcsView(List<CondPagtoParcs> condPagtoParcs)

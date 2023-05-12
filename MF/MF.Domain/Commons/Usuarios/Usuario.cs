@@ -17,17 +17,18 @@ namespace MF.Domain.Commons.Usuarios
 
         public Usuario(UsuarioCadastroDto usuario)
         {
-            Login = usuario.Login;
-            Email = usuario.Email;
-            Senha = usuario.Senha;
-            Nome = usuario.Nome;
+            Login = usuario.Login.Trim();
+            Email = usuario.Email.Trim();
+            Senha = usuario.Senha.Trim();
+            Nome = usuario.Nome.Trim();
         }
 
         public Usuario AtualizaUsuario(Usuario usuario, UsuarioCadastroDto usuarioDto)
         {
-            usuario.Login = usuarioDto.Login;
-            usuario.Email = usuarioDto.Email;
-            usuario.Email = usuarioDto.Email;
+            usuario.Login = usuarioDto.Login.Trim();
+            usuario.Email = usuarioDto.Email.Trim();
+            usuario.Nome = usuarioDto.Nome.Trim();
+            usuario.Senha = usuarioDto.Senha.Trim();
 
             return usuario;
         }
@@ -36,8 +37,8 @@ namespace MF.Domain.Commons.Usuarios
         {
             ConsumidorDto consumidor = new()
             {
-                Nome = dto.Nome,
-                Email = dto.Email
+                Nome = dto.Nome.Trim(),
+                Email = dto.Email.Trim()
             };
 
             return consumidor;

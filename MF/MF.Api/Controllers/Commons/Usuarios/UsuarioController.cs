@@ -32,36 +32,6 @@ namespace MF.Api.Controllers.Commons.Usuarios
             }
         }
 
-        [HttpGet]
-        [Route("GetAll")]
-        public async Task<IActionResult> Get()
-        {
-            try
-            {
-                List<UsuarioView> views = _aplicUsuario.FindAll();
-                return Ok(views);
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
-
-        [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            try
-            {
-                UsuarioView view = _aplicUsuario.FindById(id);
-                return Ok(view);
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
-
         [HttpPut]
         [Route("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] UsuarioCadastroDto dto)
@@ -77,13 +47,13 @@ namespace MF.Api.Controllers.Commons.Usuarios
             }
         }
 
-        [HttpDelete]
-        [Route("{id}")]
-        public async Task<IActionResult> DeleteById(int id)
+        [HttpPost]
+        [Route("RecuperarSenha/{login}/{email}")]
+        public async Task<IActionResult> RecuperarSenha(string login, string email)
         {
             try
             {
-                _aplicUsuario.Delete(id);
+                _aplicUsuario.RecuperarSenha(login, email);
                 return Ok();
             }
             catch (Exception e)
@@ -92,13 +62,13 @@ namespace MF.Api.Controllers.Commons.Usuarios
             }
         }
 
-        [HttpDelete]
-        [Route("DeleteByIds")]
-        public async Task<IActionResult> DeleteByIds([FromBody] List<int> ids)
+        [HttpPut]
+        [Route("AlterarSenha")]
+        public async Task<IActionResult> AlterarSenha(AlterarSenhaDto dto)
         {
             try
             {
-                _aplicUsuario.Delete(ids);
+                _aplicUsuario.AlterarSenha(dto.Email, dto.Senha, dto.SenhaRepetida);
                 return Ok();
             }
             catch (Exception e)
