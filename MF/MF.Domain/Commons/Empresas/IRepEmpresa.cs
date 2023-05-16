@@ -2,5 +2,6 @@
 {
     public interface IRepEmpresa : IRep<Empresa>
     {
+        List<Empresa> BuscarEmpresaPorNomeOuCNPJ(string cnpjEmpresa, string nomeEmpresa);
     }
 }

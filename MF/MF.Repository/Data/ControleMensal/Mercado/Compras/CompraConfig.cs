@@ -20,6 +20,18 @@ namespace MF.Repository.Data.ControleMensal.Mercado.Compras
                    .HasColumnType("date")
                    .IsRequired();
 
+            builder.Property(c => c.ValorTotalNF)
+                   .HasColumnType("decimal(10,2)")
+                   .IsRequired();
+
+            builder.Property(c => c.NumeroNF)
+                   .HasColumnType("int")
+                   .IsRequired();
+
+            builder.Property(c => c.NumeroNF)
+                   .HasColumnType("VARCHAR")
+                   .IsRequired();
+
             builder.Property(c => c.ValorTotal)
                    .HasColumnType("decimal(10,2)")
                    .IsRequired();

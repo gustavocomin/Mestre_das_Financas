@@ -3,6 +3,9 @@ using MF.Application.Commons.Empresas;
 using MF.Application.Commons.ModalidadePagto.CondPagtos;
 using MF.Application.Commons.ModalidadePagto.CondPagtos.Parcs;
 using MF.Application.Commons.Usuarios;
+using MF.Application.ControleMensal.Despesas;
+using MF.Application.ControleMensal.Mercado.Compras;
+using MF.Application.ControleMensal.Mercado.Compras.Itens;
 using MF.Domain.Commons.Consumirdores;
 using MF.Domain.Commons.Empresas;
 using MF.Domain.Commons.ModalidadePagto.CondPagtos;
@@ -11,6 +14,8 @@ using MF.Domain.Commons.Usuarios;
 using MF.Domain.Commons.Usuarios.Email;
 using MF.Domain.Commons.Usuarios.Validacoes;
 using MF.Domain.ControleMensal.Despesas;
+using MF.Domain.ControleMensal.Mercado.Compras;
+using MF.Domain.ControleMensal.Mercado.Compras.Itens;
 using MF.Repository.Configurations.Db;
 using MF.Repository.Data.Commons.Consumirdores;
 using MF.Repository.Data.Commons.Empresas;
@@ -19,6 +24,8 @@ using MF.Repository.Data.Commons.ModalidadePagto.CondPagtos.Parcs;
 using MF.Repository.Data.Commons.Usuarios;
 using MF.Repository.Data.Commons.Usuarios.Email;
 using MF.Repository.Data.ControleMensal.Despesas;
+using MF.Repository.Data.ControleMensal.Mercado.Compras;
+using MF.Repository.Data.ControleMensal.Mercado.Compras.Itens;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -117,12 +124,17 @@ namespace MF.Api
             builder.Services.AddScoped<IRepCondPagto, RepCondPagto>();
             builder.Services.AddScoped<IRepCondPagtoParcs, RepCondPagtoParcs>();
             builder.Services.AddScoped<IRepDespesa, RepDespesa>();
+            builder.Services.AddScoped<IRepCompra, RepCompra>();
+            builder.Services.AddScoped<IRepItemCompra, RepItemCompra>();
 
             builder.Services.AddScoped<IAplicConsumidor, AplicConsumidor>();
             builder.Services.AddScoped<IAplicUsuario, AplicUsuario>();
             builder.Services.AddScoped<IAplicEmpresa, AplicEmpresa>();
             builder.Services.AddScoped<IAplicCondPagto, AplicCondPagto>();
             builder.Services.AddScoped<IAplicCondPagtoParcs, AplicCondPagtoParcs>();
+            builder.Services.AddScoped<IAplicDespesa, AplicDespesa>();
+            builder.Services.AddScoped<IAplicCompra, AplicCompra>();
+            builder.Services.AddScoped<IAplicItemCompra, AplicItemCompra>();
 
             builder.Services.AddScoped<IValidacoesUsuario, ValidacoesUsuario>();
 

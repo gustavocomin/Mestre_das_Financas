@@ -1,4 +1,5 @@
-﻿using MF.Domain.ControleMensal.Mercado.Compras.Itens;
+﻿using HtmlAgilityPack;
+using MF.Domain.ControleMensal.Mercado.Compras.Itens;
 using MF.Domain.ControleMensal.Mercado.Compras.Itens.Models;
 
 namespace MF.Application.ControleMensal.Mercado.Compras.Itens
@@ -93,6 +94,61 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens
             {
                 throw new Exception($"Erro ao buscar item da compra. Erro: {e.Message}");
             }
+        }
+
+        public List<ItemCompra> ImportarItensNFCE(HtmlNodeCollection tdNodes, int id)
+        {
+            List<ItemCompra> itens = new();
+            if (tdNodes != null)
+            {
+                ItemCompra item = null;
+                for (int i = 0; i < tdNodes.Count; i++)
+                {
+                    HtmlNode tdNode = tdNodes[i];
+                    HtmlNode spanNode = tdNode.SelectSingleNode("./span");
+
+                    if (i % 6 == 0 && spanNode != null)
+                    {
+                        item = new ItemCompra
+                        {
+                            CodigoCompra = id
+                        };
+
+                        itens.Add(item);
+                    }
+
+                    if (spanNode != null)
+                    {
+                        string spanText = spanNode.InnerText.Trim();
+
+                        switch (i % 6)
+                        {
+                            case 0:
+                                item.SequencialItem = int.Parse(spanText);
+                                break;
+                            case 1:
+                                item.Descricao = spanText;
+                                break;
+                            case 2:
+                                item.Quantidade = decimal.Parse(spanText);
+                                break;
+                            case 3:
+                                item.UnidadeCompra = (UnidadeCompra)Enum.Parse(typeof(UnidadeCompra), spanText.ToUpper().Trim());
+                                break;
+                            case 4:
+                                item.ValorUnitario = decimal.Parse(spanText);
+                                break;
+                            case 5:
+                                item.ValorTotalItem = decimal.Parse(spanText);
+                                break;
+
+                        }
+                    }
+                }
+            }
+
+            _repItemCompra.SaveChanges(itens);
+            return itens;
         }
     }
 }

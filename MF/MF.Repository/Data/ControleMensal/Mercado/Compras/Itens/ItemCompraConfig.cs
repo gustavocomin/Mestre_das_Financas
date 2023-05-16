@@ -23,6 +23,9 @@ namespace MF.Repository.Data.ControleMensal.Mercado.Compras.Itens
                    .HasMaxLength(200)
                    .IsRequired();
 
+            builder.Property(e => e.UnidadeCompra)
+                   .IsRequired();
+
             builder.Property(x => x.Quantidade)
                    .HasColumnType("decimal(18,2)")
                    .IsRequired();

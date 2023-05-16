@@ -22,7 +22,7 @@ namespace MF.Repository.Data.Commons.Empresas
                    .IsRequired();
 
             builder.Property(e => e.CnpjEmpresa)
-                   .HasMaxLength(14);
+                   .HasMaxLength(15);
 
             builder.Property(e => e.Endereço)
                    .HasMaxLength(200);

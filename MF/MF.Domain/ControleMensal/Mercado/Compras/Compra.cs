@@ -12,9 +12,12 @@ namespace MF.Domain.ControleMensal.Mercado.Compras
         public string Descricao { get; set; }
         public DateTime DataCompra { get; set; }
         public decimal ValorTotal { get; private set; }
+        public decimal ValorTotalNF { get; set; }
         public decimal ValorTotalItens { get; private set; }
         public decimal ValorTotalDescontos { get; private set; }
         public decimal ValorTributos { get; set; }
+        public int NumeroNF { get; set; }
+        public string LinkNF { get; set; }
         public string? COO { get; set; }
         public string? CCF { get; set; }
 
@@ -27,37 +30,11 @@ namespace MF.Domain.ControleMensal.Mercado.Compras
         public CondPagto? CondPagto { get; set; }
         public List<ItemCompra>? Itens { get; set; }
 
-        private void CalculaValorTotalDescontos()
-        {
-            ValorTotalDescontos = Itens.Sum(x => x.DescontoItem.ValorDesconto > 0 ? x.DescontoItem.ValorDesconto : 0);
-        }
 
-        private void CalculaValorTotalItens()
-        {
-            ValorTotalItens = Itens.Sum(x => x.ValorTotalItem);
-        }
-
-        private void CalculaValorTotal()
-        {
-            ValidaValorTotalItens(ValorTotalItens);
-            ValorTotal = ValorTotalItens - ValorTotalDescontos + ValorTributos;
-        }
-
-        public void AtualizaCalculos()
-        {
-            CalculaValorTotalDescontos();
-            CalculaValorTotalItens();
-            CalculaValorTotal();
-        }
-
-        private static void ValidaValorTotalItens(decimal valorTotalItens)
-        {
-            if (string.IsNullOrWhiteSpace(valorTotalItens.ToString()))
-                throw new Exception("Erro ao calcular valor total! Erro ao calcular o valor total dos itens.");
-        }
 
         public Compra()
         {
+            Itens = new List<ItemCompra>();
         }
 
         public Compra(CompraDto compraDto)
@@ -86,6 +63,35 @@ namespace MF.Domain.ControleMensal.Mercado.Compras
             AtualizaCalculos();
 
             return compra;
+        }
+
+        private void CalculaValorTotalDescontos()
+        {
+            ValorTotalDescontos = Itens.Sum(x => x.DescontoItem.ValorDesconto > 0 ? x.DescontoItem.ValorDesconto : 0);
+        }
+
+        private void CalculaValorTotalItens()
+        {
+            ValorTotalItens = Itens.Sum(x => x.ValorTotalItem);
+        }
+
+        private void CalculaValorTotal()
+        {
+            ValidaValorTotalItens(ValorTotalItens);
+            ValorTotal = ValorTotalItens - ValorTotalDescontos + ValorTributos;
+        }
+
+        public void AtualizaCalculos()
+        {
+            CalculaValorTotalDescontos();
+            CalculaValorTotalItens();
+            CalculaValorTotal();
+        }
+
+        private static void ValidaValorTotalItens(decimal valorTotalItens)
+        {
+            if (string.IsNullOrWhiteSpace(valorTotalItens.ToString()))
+                throw new Exception("Erro ao calcular valor total! Erro ao calcular o valor total dos itens.");
         }
     }
 }

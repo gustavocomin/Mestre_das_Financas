@@ -1,5 +1,6 @@
 ﻿using MF.Domain.Commons.ClassesBase;
 using MF.Domain.Commons.Empresas.Models;
+using System.Text.RegularExpressions;
 
 namespace MF.Domain.Commons.Empresas
 {
@@ -16,10 +17,16 @@ namespace MF.Domain.Commons.Empresas
         {
         }
 
+        public Empresa(string cnpjEmpresa, string nomeEmpresa)
+        {
+            CnpjEmpresa = RemoveCaracterEspecial(cnpjEmpresa);
+            NomeEmpresa = nomeEmpresa;
+        }
+
         public Empresa(EmpresaDto empresa)
         {
             NomeEmpresa = empresa.NomeEmpresa;
-            CnpjEmpresa = empresa.CnpjEmpresa;
+            CnpjEmpresa = RemoveCaracterEspecial(empresa.CnpjEmpresa);
             Endereço = empresa.Endereço;
             Bairro = empresa.Bairro;
             Cidade = empresa.Cidade;
@@ -29,13 +36,18 @@ namespace MF.Domain.Commons.Empresas
         public Empresa AtualizaEmpresa(Empresa empresa, EmpresaDto empresaDto)
         {
             empresa.NomeEmpresa = empresaDto.NomeEmpresa;
-            empresa.CnpjEmpresa = empresaDto.CnpjEmpresa;
+            empresa.CnpjEmpresa = RemoveCaracterEspecial(empresaDto.CnpjEmpresa);
             empresa.Endereço = empresaDto.Endereço;
             empresa.Bairro = empresaDto.Bairro;
             empresa.Cidade = empresaDto.Cidade;
             empresa.Complemento = empresaDto.Complemento;
 
             return empresa;
+        }
+
+        public static string RemoveCaracterEspecial(string cnpj)
+        {
+            return Regex.Replace(cnpj, @"[^a-zA-Z0-9]", "");
         }
     }
 }

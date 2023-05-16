@@ -8,6 +8,7 @@ namespace MF.Application.ControleMensal.Mercado.Compras
         void Delete(List<int> ids);
         List<CompraView> FindAll();
         CompraView FindById(int id);
+        Task<CompraView> ImportarNFCEAsync(string url);
         CompraView Insert(CompraDto dto);
         CompraView Update(int id, CompraDto dto);
     }
