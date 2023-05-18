@@ -30,8 +30,7 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens.Models
             ValorUnitario = itemCompra.ValorUnitario;
             ValorTotalItem = itemCompra.ValorTotalItem;
             CodigoDesconto = itemCompra.CodigoDesconto;
-            DescontoItem = new DescontoItemView(itemCompra.DescontoItem);
-            Compra = new CompraView(itemCompra.Compra);
+            DescontoItem = itemCompra.DescontoItem == null ? null : new DescontoItemView(itemCompra.DescontoItem);
         }
 
         public List<ItemCompraView> ListItemCompraView(List<ItemCompra> itemCompras)

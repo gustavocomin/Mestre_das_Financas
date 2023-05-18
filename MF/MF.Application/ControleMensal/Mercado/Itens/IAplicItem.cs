@@ -9,6 +9,7 @@ namespace MF.Application.ControleMensal.Mercado.Itens
         List<ItemView> FindAll();
         ItemView FindById(int id);
         ItemView Insert(ItemDto dto);
+        List<ItemView> Insert(List<ItemDto> dtos);
         ItemView Update(int id, ItemDto dto);
     }
 }

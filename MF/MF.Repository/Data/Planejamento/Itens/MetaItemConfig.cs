@@ -1,15 +1,25 @@
 ﻿using MF.Domain.Planejamento.Itens;
-using MF.Repository.Configurations.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.Planejamento.Itens
 {
-    public class MetaItemConfig : EntityTypeConfigurationIdBaseDtAlt<MetaItem>
+    public class MetaItemConfig : IEntityTypeConfiguration<MetaItem>
     {
         public void Configure(EntityTypeBuilder<MetaItem> builder)
         {
             builder.ToTable("METAITEM");
+
+            string idColumnName = $"Id{builder.Metadata.ClrType.Name}";
+
+            builder.HasKey(mi => mi.Id);
+
+            builder.Property(t => t.Id)
+                   .HasColumnName(idColumnName);
+
+            builder.Property(mi => mi.DataAlteracao)
+                   .HasColumnType("TIMESTAMP")
+                   .IsRequired();
 
             builder.Property(mi => mi.Descricao)
                    .HasColumnType("varchar")
@@ -48,9 +58,9 @@ namespace MF.Repository.Data.Planejamento.Itens
                    .IsRequired();
 
             builder.HasOne(mi => mi.Meta)
-                .WithMany(m => m.Itens)
-                .HasForeignKey(mi => mi.CodigoMeta)
-                .OnDelete(DeleteBehavior.Restrict);
+                   .WithMany(m => m.Itens)
+                   .HasForeignKey(mi => mi.CodigoMeta)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

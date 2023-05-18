@@ -19,6 +19,18 @@ namespace MF.Domain.ControleMensal.Mercado.Itens
             Descricao = item.Descricao;
         }
 
+        public List<Item> CriaListaItemPorDto(List<ItemDto> itensDto)
+        {
+            List<Item> itens = new();
+            itensDto.ForEach(it =>
+            {
+                Item item = new(it);
+                itens.Add(item);
+            });
+
+            return itens;
+        }
+
         public Item AtualizaItem(Item item, ItemDto itemDto)
         {
             item.Descricao = itemDto.Descricao;

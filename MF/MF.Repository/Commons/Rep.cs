@@ -29,6 +29,13 @@ namespace MF.Repository.Commons
             _contexto.SaveChanges();
         }
 
+        public void SaveChangesRange<T>(IEnumerable<T> entities) where T : class
+        {
+            _contexto.Set<T>().UpdateRange(entities);
+            _contexto.SaveChanges();
+        }
+
+
         public void DeleteById<T>(int id) where T : class
         {
             var entity = _contexto.Set<T>().Find(id);

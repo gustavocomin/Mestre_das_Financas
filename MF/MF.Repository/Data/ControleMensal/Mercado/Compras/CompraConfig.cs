@@ -1,15 +1,21 @@
 ﻿using MF.Domain.ControleMensal.Mercado.Compras;
-using MF.Repository.Configurations.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Compras
 {
-    public class CompraConfig : EntityTypeConfigurationIdBase<Compra>
+    public class CompraConfig : IEntityTypeConfiguration<Compra>
     {
         public void Configure(EntityTypeBuilder<Compra> builder)
         {
             builder.ToTable("COMPRA");
+
+            string idColumnName = $"Id{builder.Metadata.ClrType.Name}";
+
+            builder.HasKey(mi => mi.Id);
+
+            builder.Property(t => t.Id)
+                   .HasColumnName(idColumnName);
 
             builder.Property(c => c.Descricao)
                    .HasColumnType("VARCHAR")

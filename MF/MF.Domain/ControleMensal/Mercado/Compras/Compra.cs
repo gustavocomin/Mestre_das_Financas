@@ -28,7 +28,7 @@ namespace MF.Domain.ControleMensal.Mercado.Compras
         public Empresa? Empresa { get; set; }
         public FormaPagto? FormaPagto { get; set; }
         public CondPagto? CondPagto { get; set; }
-        public List<ItemCompra>? Itens { get; set; }
+        public List<ItemCompra> Itens { get; set; }
 
 
 
@@ -67,7 +67,7 @@ namespace MF.Domain.ControleMensal.Mercado.Compras
 
         private void CalculaValorTotalDescontos()
         {
-            ValorTotalDescontos = Itens.Sum(x => x.DescontoItem.ValorDesconto > 0 ? x.DescontoItem.ValorDesconto : 0);
+            ValorTotalDescontos = (decimal)Itens.Sum(x => x.DescontoItem?.ValorDesconto > 0 ? x.DescontoItem?.ValorDesconto : 0);
         }
 
         private void CalculaValorTotalItens()

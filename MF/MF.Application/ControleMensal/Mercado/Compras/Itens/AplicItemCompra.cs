@@ -1,16 +1,23 @@
 ﻿using HtmlAgilityPack;
+using MF.Application.ControleMensal.Mercado.Itens;
 using MF.Domain.ControleMensal.Mercado.Compras.Itens;
 using MF.Domain.ControleMensal.Mercado.Compras.Itens.Models;
+using MF.Domain.ControleMensal.Mercado.Itens;
+using MF.Domain.ControleMensal.Mercado.Itens.Models;
 
 namespace MF.Application.ControleMensal.Mercado.Compras.Itens
 {
     public class AplicItemCompra : IAplicItemCompra
     {
         private readonly IRepItemCompra _repItemCompra;
+        private readonly IRepItem _repItem;
+        private readonly IAplicItem _aplicItem;
 
-        public AplicItemCompra(IRepItemCompra repItemCompra)
+        public AplicItemCompra(IRepItemCompra repItemCompra, IRepItem repItem, IAplicItem aplicItem)
         {
             _repItemCompra = repItemCompra;
+            _repItem = repItem;
+            _aplicItem = aplicItem;
         }
 
         public ItemCompraView Insert(ItemCompraDto dto)
@@ -147,8 +154,29 @@ namespace MF.Application.ControleMensal.Mercado.Compras.Itens
                 }
             }
 
-            _repItemCompra.SaveChanges(itens);
+            List<ItemCompra> itensInexistens = CriaListaItensInexistes(itens);
+            if (itensInexistens.Count > 0)
+            {
+                List<ItemDto> dtos = new ItemDto().CriaListaDto(itensInexistens.Select(x => x.Descricao).ToList());
+                _aplicItem.Insert(dtos);
+            }
+            _repItemCompra.SaveChangesRange(itens);
             return itens;
+        }
+
+        public List<ItemCompra> CriaListaItensInexistes(List<ItemCompra> itens)
+        {
+            List<ItemCompra> itensInexistens = new();
+
+            itens.ForEach(x =>
+            {
+                List<Item> itensExistentes = _repItem.BuscarItemLikeNome(x.Descricao);
+
+                if (itensExistentes != null && !itensExistentes.Any())
+                    itensInexistens.Add(x);
+            });
+
+            return itensInexistens;
         }
     }
 }

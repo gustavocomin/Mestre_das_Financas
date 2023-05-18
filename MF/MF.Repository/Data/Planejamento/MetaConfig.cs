@@ -1,15 +1,25 @@
 ﻿using MF.Domain.Planejamento;
-using MF.Repository.Configurations.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.Planejamento
 {
-    public class MetaConfig : EntityTypeConfigurationIdBaseDtAlt<Meta>
+    public class MetaConfig : IEntityTypeConfiguration<Meta>
     {
         public void Configure(EntityTypeBuilder<Meta> builder)
         {
             builder.ToTable("META");
+
+            string idColumnName = $"Id{builder.Metadata.ClrType.Name}";
+
+            builder.HasKey(mi => mi.Id);
+
+            builder.Property(t => t.Id)
+                   .HasColumnName(idColumnName);
+
+            builder.Property(mi => mi.DataAlteracao)
+                   .HasColumnType("TIMESTAMP")
+                   .IsRequired();
 
             builder.Property(m => m.Descricao)
                    .HasColumnType("varchar")

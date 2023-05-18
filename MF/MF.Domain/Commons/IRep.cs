@@ -7,8 +7,8 @@ namespace MF.Domain.Commons
         List<T> FindAll<T>() where T : class;
         T FindById<T>(int id) where T : IdBase;
         void SaveChanges<T>(T entity) where T : class;
+        void SaveChangesRange<T>(IEnumerable<T> entities) where T : class;
         void DeleteById<T>(int id) where T : class;
         void DeleteByIds<T>(List<int> ids) where T : IdBase;
     }
-
 }

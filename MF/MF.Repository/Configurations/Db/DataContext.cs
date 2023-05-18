@@ -12,6 +12,7 @@ using MF.Domain.ControleMensal.Mercado.Itens.MarcaItens;
 using MF.Domain.ControleMensal.Rendas;
 using MF.Domain.Planejamento;
 using MF.Domain.Planejamento.Itens;
+using MF.Repository.Data.ControleMensal.Mercado.Compras;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
@@ -37,8 +38,8 @@ namespace MF.Repository.Configurations.Db
         public DbSet<Renda> Renda { get; set; }
 
         public DbSet<DescontoItem> DescontoItem { get; set; }
-        public DbSet<ItemCompra> ItemCompra { get; set; }
         public DbSet<Compra> Compra { get; set; }
+        public DbSet<ItemCompra> ItemCompra { get; set; }
         public DbSet<MarcaItem> MarcaItem { get; set; }
         public DbSet<Item> Item { get; set; }
 
@@ -69,20 +70,8 @@ namespace MF.Repository.Configurations.Db
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Entity<Consumidor>();
-            modelBuilder.Entity<Empresa>();
-            modelBuilder.Entity<CondPagto>();
-            modelBuilder.Entity<CondPagtoParcs>();
-            modelBuilder.Entity<FormaPagto>();
-            modelBuilder.Entity<Despesa>();
-            modelBuilder.Entity<Renda>();
-            modelBuilder.Entity<DescontoItem>();
-            modelBuilder.Entity<ItemCompra>();
-            modelBuilder.Entity<Compra>();
-            modelBuilder.Entity<MarcaItem>();
-            modelBuilder.Entity<Item>();
-            modelBuilder.Entity<Meta>();
-            modelBuilder.Entity<MetaItem>();
+
+            modelBuilder.ApplyConfiguration<Compra>(new CompraConfig());
 
             modelBuilder.Entity<ItemCompra>()
                 .HasOne(p => p.DescontoItem)

@@ -1,15 +1,21 @@
 ﻿using MF.Domain.ControleMensal.Mercado.Itens;
-using MF.Repository.Configurations.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Itens
 {
-    public class ItemConfig : EntityTypeConfigurationIdBase<Item>
+    public class ItemConfig : IEntityTypeConfiguration<Item>
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {
             builder.ToTable("ITEM");
+
+            string idColumnName = $"Id{builder.Metadata.ClrType.Name}";
+
+            builder.HasKey(mi => mi.Id);
+
+            builder.Property(t => t.Id)
+                   .HasColumnName(idColumnName);
 
             builder.Property(e => e.Descricao)
                    .HasMaxLength(200)

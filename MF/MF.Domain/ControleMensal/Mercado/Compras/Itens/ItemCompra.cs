@@ -16,7 +16,7 @@ namespace MF.Domain.ControleMensal.Mercado.Compras.Itens
         public int? CodigoDesconto { get; set; }
         public UnidadeCompra UnidadeCompra { get; set; }
 
-        public DescontoItem DescontoItem { get; set; }
+        public DescontoItem? DescontoItem { get; set; }
         public Compra Compra { get; set; }
 
         public ItemCompra()

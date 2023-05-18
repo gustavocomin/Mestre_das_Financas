@@ -1,8 +1,10 @@
 ﻿using HtmlAgilityPack;
 using MF.Application.ControleMensal.Mercado.Compras.Itens;
 using MF.Domain.Commons.Empresas;
+using MF.Domain.Commons.Functions;
 using MF.Domain.ControleMensal.Mercado.Compras;
 using MF.Domain.ControleMensal.Mercado.Compras.Models;
+using System.Transactions;
 
 namespace MF.Application.ControleMensal.Mercado.Compras
 {
@@ -136,29 +138,38 @@ namespace MF.Application.ControleMensal.Mercado.Compras
 
         private CompraView MapearDadosNFCE(string content, string url)
         {
-            Compra compra = new();
-            HtmlDocument doc = new();
-            doc.LoadHtml(content);
-            HtmlNodeCollection tableNodes = doc.DocumentNode.SelectNodes("//table[contains(@class, 'box')]");
+            using var scope = new TransactionScope();
+            try
+            {
+                Compra compra = new();
+                HtmlDocument doc = new();
+                doc.LoadHtml(content);
+                HtmlNodeCollection tableNodes = doc.DocumentNode.SelectNodes("//table[contains(@class, 'box')]");
 
-            HtmlNodeCollection tdNodes = tableNodes[0].SelectNodes(".//td");
-            MapearDadosCabecalhoNFCE(tdNodes, compra);
+                HtmlNodeCollection tdNodes = tableNodes[0].SelectNodes(".//td");
+                MapearDadosCabecalhoNFCE(tdNodes, compra);
 
-            tdNodes = tableNodes[1].SelectNodes(".//td");
-            MapearDadosEmitenteNFCE(tdNodes, compra);
-            MapearDados(compra, url);
-            _repCompra.SaveChanges(compra);
+                tdNodes = tableNodes[1].SelectNodes(".//td");
+                MapearDadosEmitenteNFCE(tdNodes, compra);
+                MapearDados(compra, url);
+                _repCompra.SaveChanges(compra);
 
-            tdNodes = tableNodes[2].SelectNodes(".//td");
-            compra.Itens = _aplicItemCompra.ImportarItensNFCE(tdNodes, compra.Id);
+                tdNodes = tableNodes[2].SelectNodes(".//td");
+                compra.Itens = _aplicItemCompra.ImportarItensNFCE(tdNodes, compra.Id);
 
-            compra.AtualizaCalculos();
+                compra.AtualizaCalculos();
 
-            _repCompra.SaveChanges(compra);
+                _repCompra.SaveChanges(compra);
 
-            CompraView view = new(compra);
+                CompraView view = new(compra);
+                scope.Complete();
 
-            return view;
+                return view;
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Ocorreu um erro durante a transação: {e.Message}. {e.InnerException}");
+            }
         }
 
         private static void MapearDadosCabecalhoNFCE(HtmlNodeCollection tdNodes, Compra compra)
@@ -169,7 +180,6 @@ namespace MF.Application.ControleMensal.Mercado.Compras
                 {
                     foreach (HtmlNode tdNode in tdNodes)
                     {
-                        // Selecionar o nó 'span' dentro do nó 'td'
                         HtmlNode spanNode = tdNode.SelectSingleNode("./span");
 
                         if (spanNode != null)
@@ -234,7 +244,6 @@ namespace MF.Application.ControleMensal.Mercado.Compras
                     {
                         throw new Exception($"Erro ao mapear dados do emitente da NFCE. Erro: {e.Message} {e.InnerException}");
                     }
-
                 }
                 MapearEmpresa(compra, cnpjEmpresa, nomeEmpresa);
             }
@@ -242,7 +251,7 @@ namespace MF.Application.ControleMensal.Mercado.Compras
 
         private void MapearEmpresa(Compra compra, string cnpjEmpresa, string nomeEmpresa)
         {
-            cnpjEmpresa = Empresa.RemoveCaracterEspecial(cnpjEmpresa);
+            cnpjEmpresa = CommonFunctions.RemoveCaracterEspecial(cnpjEmpresa);
             List<Empresa> empresas = _repEmpresa.BuscarEmpresaPorNomeOuCNPJ(cnpjEmpresa, nomeEmpresa);
             if (!empresas.Any())
             {
@@ -261,9 +270,9 @@ namespace MF.Application.ControleMensal.Mercado.Compras
             }
         }
 
-        private void MapearDados(Compra compra, string linkNF)
+        private static void MapearDados(Compra compra, string linkNF)
         {
-            compra.Descricao = $"Compra mercado mês {compra.DataCompra.Month}";
+            compra.Descricao = $"Compra de mercado no mês {compra.DataCompra.Month}.";
             compra.LinkNF = linkNF;
         }
     }

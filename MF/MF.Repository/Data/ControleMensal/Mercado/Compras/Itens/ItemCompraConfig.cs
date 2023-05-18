@@ -1,15 +1,25 @@
 ﻿using MF.Domain.ControleMensal.Mercado.Compras.Itens;
-using MF.Repository.Configurations.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MF.Repository.Data.ControleMensal.Mercado.Compras.Itens
 {
-    public class ItemCompraConfig : EntityTypeConfigurationIdBaseDtAlt<ItemCompra>
+    public class ItemCompraConfig : IEntityTypeConfiguration<ItemCompra>
     {
         public void Configure(EntityTypeBuilder<ItemCompra> builder)
         {
             builder.ToTable("ITEMCOMPRA");
+
+            string idColumnName = $"Id{builder.Metadata.ClrType.Name}";
+
+            builder.HasKey(mi => mi.Id);
+
+            builder.Property(t => t.Id)
+                   .HasColumnName(idColumnName);
+
+            builder.Property(mi => mi.DataAlteracao)
+                   .HasColumnType("TIMESTAMP")
+                   .IsRequired();
 
             builder.Property(x => x.CodigoCompra)
                    .HasColumnType("INT")
@@ -51,10 +61,10 @@ namespace MF.Repository.Data.ControleMensal.Mercado.Compras.Itens
                    .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.DescontoItem)
-               .WithOne(x => x.ItemCompra)
-               .HasForeignKey<ItemCompra>(x => x.CodigoDesconto)
-               .IsRequired(false)
-               .OnDelete(DeleteBehavior.Restrict);
+                   .WithOne(x => x.ItemCompra)
+                   .HasForeignKey<ItemCompra>(x => x.CodigoDesconto)
+                   .IsRequired(false)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

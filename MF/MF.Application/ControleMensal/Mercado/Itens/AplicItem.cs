@@ -27,6 +27,21 @@ namespace MF.Application.ControleMensal.Mercado.Itens
             }
         }
 
+        public List<ItemView> Insert(List<ItemDto> dtos)
+        {
+            try
+            {
+                List<Item> itens = new Item().CriaListaItemPorDto(dtos);
+                _repItem.SaveChangesRange(itens);
+                List<ItemView> views = new ItemView().ListItemView(itens);
+                return views;
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao inserir item. Erro: {e.Message}");
+            }
+        }
+
         public ItemView Update(int id, ItemDto dto)
         {
             try
